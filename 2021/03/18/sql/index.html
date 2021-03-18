@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>SQL - A Hugo website</title>
+<meta property="og:title" content="SQL - A Hugo website">
+
+
+  <link href='//localhost:1313/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ytling">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/lynne-lin-9bb919100/">Linkein</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">SQL</h1>
+
+    
+    <span class="article-date">2021-03-18</span>
+    
+
+    <div class="article-content">
+      
+<script src="//localhost:1313/2021/03/18/sql/index_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#case-when">CASE WHEN</a></li>
+<li><a href="#subquery">SUBQUERY</a></li>
+<li><a href="#common-table-express-cte">COMMON TABLE EXPRESS (cte)</a></li>
+</ul>
+</div>
+
+<p>SQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!). WOW, the fruit has a lot it is a super big supermarket. haha, no worried, go ahead, we group the fruit by the way it stored and apple is stored in the regular temperature, yes, we find it, whole table is in front of you. Wait, there are many kinds of apply but it is ok it is ordered in the price and I will SELECT the one ON SALE. Great, Now, I am ready to check out.</p>
+<div id="case-when" class="section level1">
+<h1>CASE WHEN</h1>
+<ul>
+<li>case when in the <strong>SELECT</strong>: category and rename a column
+As a movie lover, I love to choose movie around 100 minutes and ‘ok’ with movie less than 200,
+however never able to finish a movie more than 200 minutes. Please write a sql to see: how many in each and named it as my_choose.</li>
+</ul>
+<pre class="r"><code>sqldf(
+  &quot;
+  select 
+    case when mov_time &lt; 100 then &#39;love&#39;
+         when mov_time between 100 and 200 then &#39;ok&#39;
+    else &#39;others&#39; end as my_choose,
+     count(mov_id)
+   from movie
+   group by my_choose
+  &quot;
+)</code></pre>
+<pre><code>##   my_choose count(mov_id)
+## 1      love             2
+## 2        ok            24
+## 3    others             2</code></pre>
+<pre class="r"><code>query =  &quot;
+  select 
+    *
+   from movie
+   where mov_lang = 
+   case when mov_time &lt; 100 then mov_lang
+         when mov_rel_country = &#39;UK&#39; then mov_lang
+    else NULL
+    end&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+<p>in other way to express the same query</p>
+<pre class="r"><code>query =
+  &quot;select *
+   from movie
+   where mov_rel_country = &#39;UK&#39;
+   or mov_time &lt; 100&quot;
+
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+<p>for this time, I would like to learn English by watching the English movie, thus I want to choose the movie with English language and the duration less than 100 minutes also want to see the rating , sorted to choose the best one to watch</p>
+<pre class="r"><code>sqldf(
+  &quot;
+  select
+    case when mov_time &lt; 100 then &#39;love&#39;
+         when mov_time between 100 and 200 then &#39;ok&#39;
+    else &#39;others&#39; end as my_choose,
+   rev_stars
+   from movie
+   natural join rating
+   where mov_lang like &#39;%English%&#39;
+   order by rev_stars
+
+  &quot;
+)</code></pre>
+<pre><code>##    my_choose rev_stars
+## 1         ok        NA
+## 2       love        NA
+## 3         ok       3.0
+## 4         ok       4.0
+## 5         ok       6.7
+## 6         ok       7.0
+## 7         ok       7.3
+## 8         ok       7.7
+## 9         ok       7.7
+## 10        ok       7.9
+## 11        ok       8.0
+## 12      love       8.1
+## 13        ok       8.1
+## 14        ok       8.2
+## 15    others       8.3
+## 16        ok       8.4
+## 17        ok       8.4
+## 18        ok       8.6</code></pre>
+<ul>
+<li>case when used in <strong>WHERE</strong>: use as a filter, you can not use alias here</li>
+</ul>
+<pre class="r"><code>sqldf(
+  &quot;
+  select
+   *
+   from movie
+   where
+   mov_time &lt; 100 or
+   mov_time between 100 and 200
+  &quot;
+)</code></pre>
+<pre><code>##    mov_id                                            mov_title mov_year
+## 1     901  Vertigo                                                 1958
+## 2     902  The Innocents                                           1961
+## 3     904  The Deer Hunter                                         1978
+## 4     905  Amadeus                                                 1984
+## 5     906  Blade Runner                                            1982
+## 6     907  Eyes Wide Shut                                          1999
+## 7     908  The Usual Suspects                                      1995
+## 8     909  Chinatown                                               1974
+## 9     910  Boogie Nights                                           1997
+## 10    911  Annie Hall                                              1977
+## 11    912  Princess Mononoke                                       1997
+## 12    913  The Shawshank Redemption                                1994
+## 13    914  American Beauty                                         1999
+## 14    915  Titanic                                                 1997
+## 15    916  Good Will Hunting                                       1997
+## 16    917  Deliverance                                             1972
+## 17    918  Trainspotting                                           1996
+## 18    919  The Prestige                                            2006
+## 19    920  Donnie Darko                                            2001
+## 20    921  Slumdog Millionaire                                     2008
+## 21    922  Aliens                                                  1986
+## 22    923  Beyond the Sea                                          2004
+## 23    924  Avatar                                                  2009
+## 24    927  Spirited Away                                           2001
+## 25    928  Back to the Future                                      1985
+## 26    925  Braveheart                                              1995
+##    mov_time          mov_lang   mov_dt_rel mov_rel_country
+## 1       128  English           1958-08-24               UK
+## 2       100  English           1962-02-19               SW
+## 3       183  English           1979-03-08               UK
+## 4       160  English           1985-01-07               UK
+## 5       117  English           1982-09-09               UK
+## 6       159  English                                    UK
+## 7       106  English           1995-08-25               UK
+## 8       130  English           1974-08-09               UK
+## 9       155  English           1998-02-16               UK
+## 10       93  English           1977-04-20              USA
+## 11      134  Japanese          2001-10-19               UK
+## 12      142  English           1995-02-17               UK
+## 13      122  English                                    UK
+## 14      194  English           1998-01-23               UK
+## 15      126  English           1998-06-03               UK
+## 16      109  English           1982-10-05               UK
+## 17       94  English           1996-02-23               UK
+## 18      130  English           2006-11-10               UK
+## 19      113  English                                    UK
+## 20      120  English           2009-01-09               UK
+## 21      137  English           1986-08-29               UK
+## 22      118  English           2004-11-26               UK
+## 23      162  English           2009-12-17               UK
+## 24      125  Japanese          2003-09-12               UK
+## 25      116  English           1985-12-04               UK
+## 26      178  English           1995-09-08               UK</code></pre>
+<ul>
+<li>count with case when to calculate number</li>
+</ul>
+<pre class="r"><code>sqldf(&quot;
+select count(case when act_gender like &#39;%M%&#39; then mov_id end) as  male_actor,
+       count(case when act_gender like &#39;%F%&#39; then mov_id end) as female_actor,
+       gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title&quot;)</code></pre>
+<pre><code>##    male_actor female_actor gen_title
+## 1           0            1    Action
+## 2           2            0 Adventure
+## 3           0            1 Animation
+## 4           1            0    Comedy
+## 5           2            0     Crime
+## 6           2            0     Drama
+## 7           0            1    Horror
+## 8           1            0     Music
+## 9           1            1   Mystery
+## 10          1            0   Romance
+## 11          1            0  Thriller
+## 12          1            0        Wa</code></pre>
+<p>or</p>
+<pre class="r"><code>sqldf(&quot;
+select sum(case when act_gender like &#39;%M%&#39;  then 1 else 0  end) as  male_actor,
+       sum(case when act_gender like &#39;%F%&#39; then 1 else 0 end ) as female_actor,
+    gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title&quot;)</code></pre>
+<pre><code>##    male_actor female_actor gen_title
+## 1           0            1    Action
+## 2           2            0 Adventure
+## 3           0            1 Animation
+## 4           1            0    Comedy
+## 5           2            0     Crime
+## 6           2            0     Drama
+## 7           0            1    Horror
+## 8           1            0     Music
+## 9           1            1   Mystery
+## 10          1            0   Romance
+## 11          1            0  Thriller
+## 12          1            0        Wa</code></pre>
+<p>In R or Python, you have the ability to calculate a SUM of logical values (i.e., TRUE/FALSE) directly. In SQL, you have to convert these values into 1 and 0 before calculating a sum. This can be done using a CASE statement.</p>
+<ul>
+<li>Calculating percent with CASE and AVG</li>
+</ul>
+<pre class="r"><code># AVG(CASE WHEN condition_is_met THEN 1
+#          WHEN condition_is_not_met THEN 0 END)</code></pre>
+</div>
+<div id="subquery" class="section level1">
+<h1>SUBQUERY</h1>
+<p>The definition of the subquery:
+* a query nested inside another query
+* it can be used in : SELECT, FROM , WHERE clause
+* subquery in WHERE as a filter
+* subquery in FROM as a new table
+* subquery in select usually in the uncorrelated query used as a new constant column</p>
+<p>uncorrelated subquery</p>
+<pre class="r"><code>sqldf(&quot;select mov_title, mov_lang,avg(mov_time) as avg_mov
+from movie
+where mov_time &gt;(select avg(mov_time)
+                   from movie)
+group by mov_lang&quot;)</code></pre>
+<pre><code>##                                              mov_title          mov_lang
+## 1  Lawrence of Arabia                                   English         
+## 2  Seven Samurai                                        Japanese        
+##    avg_mov
+## 1 172.1111
+## 2 207.0000</code></pre>
+<pre class="r"><code># corr</code></pre>
+<p>CORRELATED/NESTED subquery
+the correlated subquery is a query use value from the outer query to generate a result
+1. It can not execute separate from the main query
+2. it run from main query to the inner query iteratively. Subquery usually run from inner to main query
+3. it cause the time.
+select all the mov with their mov_time more than its average move time with from the same
+release county</p>
+<pre class="r"><code>query1 = &quot;
+select mov_title, mov_time
+from movie as outer
+where outer.mov_time &gt; (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 &quot;
+query1 %&gt;% sqldf()</code></pre>
+<pre><code>##                                               mov_title mov_time
+## 1   Lawrence of Arabia                                       216
+## 2   The Deer Hunter                                          183
+## 3   Amadeus                                                  160
+## 4   Eyes Wide Shut                                           159
+## 5   Boogie Nights                                            155
+## 6   The Shawshank Redemption                                 142
+## 7   Titanic                                                  194
+## 8   Aliens                                                   137
+## 9   Avatar                                                   162
+## 10  Seven Samurai                                            207
+## 11  Braveheart                                               178</code></pre>
+<pre class="r"><code>query2 = &quot;
+select mov_title, mov_time, avg(mov_time)
+from movie as outer
+where outer.mov_time &gt; (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 &quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+</div>
+<div id="common-table-express-cte" class="section level1">
+<h1>COMMON TABLE EXPRESS (cte)</h1>
+<p>we only want the first and last name of the actor table and substact it as a new table named
+people. it can narrow down the necessay of the information from the table and used it for many times according to the following neeeded.</p>
+<pre class="r"><code>query = &quot;with people (first, last)
+as (
+select act_fname, act_lname
+from actor
+)
+select first
+from people&quot;
+
+query %&gt;%  sqldf</code></pre>
+<pre><code>##                     first
+## 1   James                
+## 2   Deborah              
+## 3   Peter                
+## 4   Robert               
+## 5   F. Murray            
+## 6   Harrison             
+## 7   Nicole               
+## 8   Stephen              
+## 9   Jack                 
+## 10  Mark                 
+## 11  Woody                
+## 12  Claire               
+## 13  Tim                  
+## 14  Kevin                
+## 15  Kate                 
+## 16  Robin                
+## 17  Jon                  
+## 18  Ewan                 
+## 19  Christian            
+## 20  Maggie               
+## 21  Dev                  
+## 22  Sigourney            
+## 23  David                
+## 24  Ali</code></pre>
+<!-- # WINDOW FUN -->
+<!-- * sliding window  -->
+<!-- 1. perform the calculate to the current row. -->
+<!-- 2. And do the calculation row by row -->
+<!-- Numbering Olympic games in descending order -->
+<!-- ```{r} -->
+<!-- sqldf(" -->
+<!-- SELECT -->
+<!--   Year, -->
+<!--   -- Assign the lowest numbers to the most recent years -->
+<!--   ROW_NUMBER() OVER (order by year desc) AS Row_N -->
+<!-- FROM ( -->
+<!--   SELECT DISTINCT Year -->
+<!--   FROM Summer_Medals -->
+<!-- ) AS Years -->
+<!-- ORDER BY Year") -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- sqldf("SELECT mov_year, -->
+<!--       sum(mov_time)over( order by mov_year Rows between 1 preceding and current row) as newcolumn -->
+<!--       FROM movie ") -->
+<!-- ``` -->
+<!-- * lag:  pick the value of the value in the second position  -->
+<!-- LAG(column, n),LEAD(column, n), FIRST_VALUE(column),LAST_VALUE(Column).  -->
+<!-- find the resigned or return champion's countries  -->
+<!-- ```{r} -->
+<!-- sqldf(" -->
+<!--    WITH Weightlifting_Gold AS ( -->
+<!--    SELECT -->
+<!--     -- Return each year's champions' countries -->
+<!--     Year, -->
+<!--     Country AS champion -->
+<!--   FROM Summer_Medals -->
+<!--   WHERE -->
+<!--     Discipline = 'Weightlifting' AND -->
+<!--     Event = '69KG' AND -->
+<!--     Gender = 'Men' AND -->
+<!--     Medal = 'Gold') -->
+<!-- SELECT -->
+<!--   Year, Champion, -->
+<!--   lag(Champion) OVER -->
+<!--    (order by year ASC) AS Last_Champion -->
+<!-- FROM Weightlifting_Gold -->
+<!-- ORDER BY Year ASC") -->
+<!-- ``` -->
+<!-- * paging -->
+<!-- NTILE(): it is spite the data into pages. For example, if the total number of rows is 50, and there are five groups, each bucket will contain 10 rows. -->
+<!-- ```{r} -->
+<!-- sqldf(" -->
+<!--    WITH Weightlifting_Gold AS ( -->
+<!--    SELECT -->
+<!--     -- Return each year's champions' countries -->
+<!--     Year, -->
+<!--     Country AS champion -->
+<!--   FROM Summer_Medals -->
+<!--   WHERE -->
+<!--     Discipline = 'Weightlifting' AND -->
+<!--     Event = '69KG' AND -->
+<!--     Gender = 'Men' AND -->
+<!--     Medal = 'Gold') -->
+<!-- SELECT -->
+<!--   Year, Champion, -->
+<!--   NTILE(2) OVER -->
+<!--    (order by year ASC) AS quantile -->
+<!-- FROM Weightlifting_Gold -->
+<!-- ORDER BY Year ASC") -->
+<!-- ``` -->
+<!-- * FRAMES -->
+<!-- a frame to your window function allows you to calculate "moving" metrics, inputs of which slide from row to row. like ROW BETWEEN _start_ and _finish_ -->
+<!--    + current row:  -->
+<!--    + n preceding: n rows before the current row -->
+<!--    + n following: n rows after the current row -->
+<!-- __RANGE BETWEEN__ treat the duplicates as a the same order.  -->
+<!-- Crosstab: Compute a simple cross-tabulation of two (or more) factors. By default computes a frequency table of the factors unless an array of values and an aggregation function are passed.\ -->
+<!-- the postSQL can use the extending function to do the table. the format is long format we need to transfer to wide format. in postSQL we use the: crosstab. -->
+<!-- ```{r} -->
+<!-- "SELECT -->
+<!--          time, subject, val, -->
+<!--          SUM(val) OVER (PARTITION BY subject ORDER BY time -->
+<!--                         ROWS UNBOUNDED PRECEDING) -->
+<!--            AS running_total, -->
+<!--          AVG(val) OVER (PARTITION BY subject ORDER BY time -->
+<!--                         ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) -->
+<!--            AS running_average -->
+<!--        FROM observations" -->
+<!-- ``` -->
+<!-- Pivot Table: Create a spreadsheet-style pivot table as a DataFrame. The levels in the pivot table will be stored in MultiIndex objects, Hierarchical indexes on the index and columns of the result DataFrame.  -->
+<!-- ```{r} -->
+<!-- # Connect to the default postgres database -->
+<!-- pq = "CREATE TABLE t (Section CHAR(1), Status VARCHAR(10), Count integer); -->
+<!-- INSERT INTO t VALUES ('A', 'Active',   1); -->
+<!-- INSERT INTO t VALUES ('A', 'Inactive', 2); -->
+<!-- INSERT INTO t VALUES ('B', 'Active',   4); -->
+<!-- INSERT INTO t VALUES ('B', 'Inactive', 5); -->
+<!-- SELECT row_name AS Section, -->
+<!--        category_1::integer AS Active, -->
+<!--        category_2::integer AS Inactive -->
+<!-- FROM crosstab('select section::text, status, count::text from t',2) -->
+<!--             AS ct (row_name text, category_1 text, category_2 text)" -->
+<!-- sqldf(pq) -->
+<!-- ``` -->
+<!-- # Data Wrangling -->
+<!--  this means change the data into something more readable.  -->
+<!-- # UNPIVOT:ROW TO COLUMN -->
+<!-- *  create a table that lists all of the columns from the original table as rows in a new table -->
+<!-- *  cross join it with the wide table to create an expanded view  -->
+<!-- * pulls data from the correct column -->
+<!-- ```{r} -->
+<!-- query =  -->
+<!--   "SELECT * -->
+<!-- FROM Simpson_wide -->
+<!-- Limit 5 -->
+<!-- " -->
+<!-- query %>%  sqldf() -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- Catable = data.frame( 'Category' = colnames(Simpson_wide)[2:5]) -->
+<!-- query = " -->
+<!-- SELECT    -->
+<!-- * -->
+<!-- FROM  -->
+<!-- Simpson_wide -->
+<!-- CROSS JOIN Catable -->
+<!-- "  -->
+<!-- query %>%  sqldf() -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- Catable = data.frame( 'Category' = colnames(Simpson_wide)[2:5]) -->
+<!-- query = " -->
+<!-- SELECT   Catable.*, -->
+<!-- SW.Age, -->
+<!-- CASE  Catable.Category  -->
+<!-- WHEN 'Cases_White' THEN SW.Cases_White -->
+<!-- WHEN 'Cases_Others' THEN SW.Cases_Others -->
+<!-- WHEN 'Deaths_White' THEN SW.Deaths_White -->
+<!-- WHEN 'Deaths_Others' THEN SW.Deaths_Others  -->
+<!-- ELSE NULL END  -->
+<!-- as  Factors -->
+<!-- FROM  -->
+<!-- Simpson_wide  as SW -->
+<!-- CROSS JOIN Catable -->
+<!-- "  -->
+<!-- query %>%  sqldf() -->
+<!-- ``` -->
+<!-- # PIVOT:COLUME TO ROW  -->
+<!-- ```{r} -->
+<!-- # show the table in the long format  -->
+<!-- head(Simpson,5) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- query = " -->
+<!-- SELECT Age,  -->
+<!--        SUM(CASE WHEN race = 'w' THEN  Deaths ELSE NULL END) AS whitedeath , -->
+<!--        SUM(CASE WHEN race = 'w' THEN  Cases  ELSE NULL END) AS whitecase  , -->
+<!--        SUM(CASE WHEN race = 'o' THEN  Deaths  ELSE NULL END) AS otherdeath, -->
+<!--        SUM(CASE WHEN race = 'o' THEN  Cases  ELSE NULL END) AS othercase  -->
+<!-- FROM Simpson -->
+<!-- group by Age -->
+<!-- limit 4 -->
+<!-- " -->
+<!-- query %>%  sqldf() -->
+<!-- ``` -->
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="//localhost:1313/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

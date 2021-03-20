@@ -98,7 +98,7 @@ img {
   max-width: 700px;
   margin: 40px auto 10px;
   padding: 0 15px;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.7;
   color: #333;
 }
@@ -272,7 +272,7 @@ img {
   }
 
   .content {
-    font-size: 19px;
+    font-size: 16px;
     line-height: 1.8;
   }
 

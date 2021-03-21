@@ -8,6 +8,20 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>my posting workflow </title>
+      <link>/2021/03/21/my-posting-workflow/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/21/my-posting-workflow/</guid>
+      <description>Since I open a blog with the hugo plus git. I spent a lot time researching a simple and easy way to publish a blog. Then I used to the follow steps.
+Assumption:
+experienced R/R studio, git commit, a exiting blog, knowledge in HTML and CSS
+Procedure:
+1. in R studio, use the Addins –&amp;gt; New Post –&amp;gt; fill in the information(I choose the .Rmd always)
+2. in write the information with the simple markdown syntax</description>
+    </item>
+    
+    <item>
       <title>The Best For You</title>
       <link>/2021/03/21/ukulele-the-best-for-you/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>

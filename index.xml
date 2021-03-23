@@ -6,7 +6,19 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interview</title>
+      <link>/2021/03/22/interview/</link>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/22/interview/</guid>
+      <description>update my interview experience:
+the manager does not ask about a lot regarding the me. But the thing(key word) they care most, like SQL and mongoDB. And ask me to describe the
+why you leave the Bank? If you are a peason left the last decent job, they are mostly like to ask.
+tell me about yourself -&amp;gt; what can you bring to our company?this is not always asking when you are interviewing.</description>
+    </item>
+    
     <item>
       <title>my posting workflow </title>
       <link>/2021/03/21/my-posting-workflow/</link>
@@ -22,23 +34,17 @@ Procedure:
     </item>
     
     <item>
-      <title>The Best For You</title>
-      <link>/2021/03/21/ukulele-the-best-for-you/</link>
+      <title>SAS</title>
+      <link>/2021/03/21/sql-sas/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/03/21/ukulele-the-best-for-you/</guid>
-      <description>Origin
-\[C \ C \ E7 \ E7 \ Am \ Am \ Dm \ \]
-C One day I knew
-C This wasn’t fixable
-E7 I still want you
-But E7 I won’t be in this if
-Am you don’t want to
-Am you don’t want to
-Open Dm up G Oooh
-C This how it starts
-C Fighting about nothing and E7 going too far
-E7 I just can’t look now we’re</description>
+      <guid>/2021/03/21/sql-sas/</guid>
+      <description>SQLYou are given two non-empty linked lists representing two non-negative integers.
+The digits are stored in reverse order, and each of their nodes contains a single digit.
+Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+source
+For this problem we will begin with the sashelp.baseball data set.</description>
     </item>
     
     <item>
@@ -47,7 +53,7 @@ E7 I just can’t look now we’re</description>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>CASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)SQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!). WOW, the fruit has a lot it is a super big supermarket.</description>
+      <description>CASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNData WranglingUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!</description>
     </item>
     
     <item>

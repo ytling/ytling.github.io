@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>SAS - A Hugo website</title>
+<meta property="og:title" content="SAS - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ytling">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/lynne-lin-9bb919100/">Linkedin</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">SAS</h1>
+
+    
+    <span class="article-date">2021-03-21</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/03/21/sql-sas/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="sql" class="section level1">
+<h1>SQL</h1>
+<p>You are given two non-empty linked lists representing two non-negative integers.</p>
+<p>The digits are stored in reverse order, and each of their nodes contains a single digit.</p>
+<p>Add the two numbers and return the sum as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p><a href="https://people.stat.sc.edu/hitchcock/">source</a></p>
+<ol style="list-style-type: decimal">
+<li>For this problem we will begin with the sashelp.baseball data set.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Create a new table called newtable in the work library that has exactly the same rows as the sashelp.baseball table,
+but only has the following columns: ABCD</li>
+</ol>
+<pre><code>proc sql outobs = 10;
+  title &#39;&#39;;
+  create table sql.newtable as
+      select A,
+             B,
+             C,
+             D
+      from sql.baseball;
+quit;</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Insert the following two rows into the table</li>
+</ol>
+<pre><code>proc sql;
+insert into newtable
+(A,B,C,D)
+values(1,2,3,4);
+insert into newtable
+(A,B,C,D)
+values(1,2,2,2);
+select * from newtable;
+quit;</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Add three different types of <em>integrity constraint</em> to the table. Verify that each integrity constraint
+works by attempting to insert rows that fail each respective constraint. In your program’s comments, report the
+result of the attempted insertions.</li>
+</ol>
+<pre><code>create table 
+  (col1 type
+   col2 type2,
+   col3 type3,
+   /*          */
+    constain col1 primary key(stats),
+    constrain population check(col1 gt 0),
+    constrain continent check(col2 in ()));
+</code></pre>
+<pre><code>proc sql;
+insert into new_table
+(Col1, Col2, Col3)
+values(1,2,3);
+* fails Col1 not null constraint;
+* fails primary key constraint;
+* fails League check constraint;
+quit;</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Convert the col A with .</li>
+</ol>
+<p><em>NOTE</em>:<br />
+the case when in sql is (case when ) as
+in sas sql is var = (case when )</p>
+<pre><code>proc sql outobs = 10;
+update table
+# create a fuction as a filer to filer out 
+set modsal =  
+case when B= 1 then 6*A
+     when B= 2 then 5*A
+     when B= 0 then 8*A 
+else 0*A
+end; 
+select *
+from newtable;
+quit;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Two data with labled ‘practice vertical table’. the data describe observations with same variable in two different years.
+Use PROC SQL <strong>set operation</strong> commands to do the following:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Write a query that will combine the tables into one table that has all the players who played in both years. Select only the “Col1”, “Col2” and “Col3” columns: formated date into MMDDYY10 to be printed. and ordered by the ‘Col3’</li>
+</ol>
+<pre><code>select Col1,Col2,Col3
+from 2014
+intersect
+select Col1, Col2, Col3
+from 2015
+order by rating desc
+quit;</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Write a query that will combine the tables into one table that has all the players who played in 2015 but not in 2014.<br />
+</li>
+</ol>
+<pre><code>proc sql;
+select Col1, Col2, Col3
+from 2015 
+except 
+select Col1, Col2, Col3
+from 2014 
+quit;</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Write a query that will combine the tables into one table that has all the players who played in either 2014 or 2015 or both years.<br />
+</li>
+</ol>
+<pre><code>proc sql;
+select col1, col2, col3.
+from 2014
+union
+select col1,col2,col3
+from 2015
+quit;</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Do the same as in part (d), but for players who played in both years, have them be listed
+multiple times (i.e., as many times as they appear in the tables).</li>
+</ol>
+<pre><code>proc sql;
+select Col1, Col2, Col3
+from 2014
+union all
+select Col1, Col2, Col3
+from 2015
+quit;</code></pre>
+</div>
+<div id="mrcro" class="section level1">
+<h1>MRCRO</h1>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

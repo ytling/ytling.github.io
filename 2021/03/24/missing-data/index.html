@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Missing Data - A Hugo website</title>
+<meta property="og:title" content="Missing Data - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ytling">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/lynne-lin-9bb919100/">Linkedin</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Missing Data</h1>
+
+    
+    <span class="article-date">2021-03-24</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/03/24/missing-data/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="what-types-of-missing-data" class="section level2">
+<h2>What types of missing data?</h2>
+<ul>
+<li>Missing completely at random</li>
+<li>Missing at random</li>
+<li>Missing not at random</li>
+</ul>
+</div>
+<div id="what-technique-to-handle-missing-data" class="section level2">
+<h2>What technique to handle missing data?</h2>
+<ol style="list-style-type: decimal">
+<li>Listwise or case deletion：
+<ul>
+<li>assumption：sample size are large<br />
+</li>
+<li>con: simple implement</li>
+<li>pro: loss given information</li>
+</ul></li>
+<li>Pairwise deletion?
+<ul>
+<li>assumption： not missing here and there,</li>
+<li>con：compare with the listwise, the lost information reduced</li>
+<li>pro：cause inaccurate stand error as the knowing</li>
+</ul></li>
+<li>Mean substitutionn?
+<ul>
+<li>assumption:</li>
+<li>con： increase the sample size</li>
+<li>pro: underestimate the errors</li>
+</ul></li>
+<li>Regression imputation
+<ul>
+<li>assumption: the value of other data are not missing</li>
+<li>con: increase the sample size, reduce the stand error</li>
+<li>pro: add extra effort into finding the fitted regression model</li>
+</ul></li>
+<li>Last observation carried forward
+<ul>
+<li>assumption: the outcome remains unchanged by the missing data</li>
+<li>con: easy communicate , typically used method on <em>longitudinal</em> data</li>
+<li>pro: need meet the assumption</li>
+</ul></li>
+<li>Maximum likelihood
+<ul>
+<li>assumption: known distribution, etc. multivariate normal distribution</li>
+<li>con: understandarble, reasonable</li>
+<li>pro: increaing difficulty in computing</li>
+</ul></li>
+<li>Expectation-Maximization
+<ul>
+<li>assumption: suitable number of missing data</li>
+<li>con: increase the level of precision, it tends to play with number.</li>
+<li>pro: take a long time to converge, not good for too many missing data
+Multiple imputation</li>
+</ul></li>
+<li>Multiple imputation
+<ul>
+<li>assumption: depends on the packages/library</li>
+<li>con: robosted, not limited to single distribution</li>
+<li>pro: take efforts to understand and utilized the methods with the exiting package</li>
+</ul></li>
+</ol>
+<p>In conclusion, no matter what is the methods we used to implement the missing data, Sensitivity analysis is required by National Research Council to be conducted to evaluate the robustness of the results. Sensitivity analysis is to measure the uncentainty of the output from a strategy we choose for the missing data. This is also called simulation analysis in some researches.</p>
+<hr />
+<p>reference:
+Hyun Kang. The prevention and handling of the missing data. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3668100/">link</a></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

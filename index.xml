@@ -6,7 +6,28 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Experimental Design </title>
+      <link>/2021/03/26/experimental-design/</link>
+      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/26/experimental-design/</guid>
+      <description>Some concepts and examples in Experimental Design
+experimental study: a study subject is assigned the treatmentobservational study: a study with subject is observed or measuredexperimental unit: in an experimental study, basic entity can be assigned is called experimental unit. The experimental unit is people, called subject. At observational and experimental study, subjects are called participants.
+Experimental DesignA good experimental design will need:1. treatments are random assigned to the experimental unit.</description>
+    </item>
+    
+    <item>
+      <title>Missing Data</title>
+      <link>/2021/03/24/missing-data/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/24/missing-data/</guid>
+      <description>What types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
+con: simple implementpro: loss given informationPairwise deletion?assumption： not missing here and there,con：compare with the listwise, the lost information reducedpro：cause inaccurate stand error as the knowingMean substitutionn?</description>
+    </item>
+    
     <item>
       <title>Interview</title>
       <link>/2021/03/22/interview/</link>
@@ -20,7 +41,7 @@ tell me about yourself -&amp;gt; what can you bring to our company?this is not 
     </item>
     
     <item>
-      <title>my posting workflow </title>
+      <title>New Post Workflow </title>
       <link>/2021/03/21/my-posting-workflow/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -53,7 +74,9 @@ For this problem we will begin with the sashelp.baseball data set.</description>
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>CASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNData WranglingUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!</description>
+      <description>CASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from [Datacamp], you can use my refer link(https://www.datacamp.com/join-me/MjY2NTU1) to get started and learn new technique together.
+A recommended website: data.world
+SQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping.</description>
     </item>
     
     <item>

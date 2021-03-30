@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.81.0" />
 
 
-<title>New Post Workflow  - A Hugo website</title>
-<meta property="og:title" content="New Post Workflow  - A Hugo website">
+<title>Post Workflow  - A Hugo website</title>
+<meta property="og:title" content="Post Workflow  - A Hugo website">
 
 
   <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -62,10 +62,10 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">2 min read</span>
     
 
-    <h1 class="article-title">New Post Workflow </h1>
+    <h1 class="article-title">Post Workflow </h1>
 
     
     <span class="article-date">2021-03-21</span>
@@ -92,7 +92,14 @@ git add .
 git commit -m &#39;XXXX&#39;
 git push </code></pre>
 <p>6.your new poster is good to go</p>
-<p>website — &gt;</p>
+<hr />
+<div id="some-possible-exception-and-my-trick" class="section level1">
+<h1>Some possible exception and my trick</h1>
+<ul>
+<li>website is generated from the HTML file, so the correct format of the html is important.
+the <code>knit</code> used with the blogdown library is different from the simple <code>knit</code> in a regular file. My solution is kind werid. I create a Rmd file named different from index.Rmd, copy the file into the new Rmd file and knit with a new html output. Then I rename the original index.Rmd and index.html into XXX_origin and changed the new created Rmd and html into index.XXX. Lastly, I serve_site() to see if it has been changed.</li>
+</ul>
+</div>
 
     </div>
   </article>

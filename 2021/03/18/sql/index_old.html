@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">15 min read</span>
+    <span class="article-duration">14 min read</span>
     
 
     <h1 class="article-title">SQL</h1>
@@ -73,12 +73,10 @@
 
     <div class="article-content">
       
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/2021/03/18/sql/index_files/header-attrs/header-attrs.js"></script>
 
 <div id="TOC">
 <ul>
-<li><a href="#defination-of-relation-tables">DEFINATION OF RELATION TABLES</a></li>
-<li><a href="#how-to-change-the-entity-to-a-schemas">HOW TO CHANGE THE ENTITY TO A SCHEMAS</a></li>
 <li><a href="#case-when">CASE WHEN</a></li>
 <li><a href="#subquery">SUBQUERY</a></li>
 <li><a href="#common-table-express-cte">COMMON TABLE EXPRESS (cte)</a></li>
@@ -91,59 +89,14 @@
 </div>
 
 <p>Some information contains from [Datacamp], you can use my refer link(<a href="https://www.datacamp.com/join-me/MjY2NTU1" class="uri">https://www.datacamp.com/join-me/MjY2NTU1</a>) to get started and learn new technique together.</p>
-<p>A recommended website: [data.world](<a href="https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.htm" class="uri">https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.htm</a></p>
-<div id="defination-of-relation-tables" class="section level1">
-<h1>DEFINATION OF RELATION TABLES</h1>
-<ul>
-<li><p>entity: (table) the object store the information</p></li>
-<li><p>attribute: column in a table to describe the part of the information</p>
-<ul>
-<li>composition attribute<br />
-</li>
-<li>multiple value of the attribute<br />
-</li>
-<li>derived attribute<br />
-</li>
-</ul></li>
-<li><p>primary key: a unique identity</p></li>
-<li><p>relationship <code>[]-&lt;&gt;=[]</code></p>
-<ul>
-<li><code>-</code>partial participant: not all in the relationship <code>&lt;&gt;</code></li>
-<li><code>=</code>total participant: all in the relationship</li>
-</ul></li>
-<li><p>weak entity: an entity that can not exit alone with its key</p></li>
-<li><p>identifying relationship: example database design: Movie in<br />
-A=1=<verb>=n=B: a A must &lt;&gt; any number of B, an B must &lt;&gt; 1 A. A=1=<verb>-1-B: a A must &lt;&gt; 1 B and not all B &lt;&gt; 1 A A-1-<verb>=1=B: a A can &lt;&gt; any number of B, a B must be &lt;&gt; 1 A A=M=<verb>-N-B: all A must &lt;&gt; with Bs, not all Bs must / B can work with As</p></li>
-</ul>
-<p><strong>NOTE</strong>: for the relationship, we can spite into two steps: 1. define the relationship(participation). 2. define the number (N,M) relationship.</p>
-</div>
-<div id="how-to-change-the-entity-to-a-schemas" class="section level1">
-<h1>HOW TO CHANGE THE ENTITY TO A SCHEMAS</h1>
-<ol style="list-style-type: decimal">
-<li>Create a entry and the attributes with the entities.<br />
-</li>
-</ol>
-<ul>
-<li>the type, the key, combinition attribute: save separetly</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>handle the weak entity</li>
-</ol>
-<ul>
-<li>for a single weak entity, create a table to contains its primary key and all the primary from its owner. for example: a gift card entity depends on the store, so we will create a table GIFT_CARD_FOR(gift_card_type, <em>card_id</em>, <em>store_id</em>)</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li><p>map the binary relationship 1:1 save the primary key in the 1 side as a foreign key in the other favor total participant</p></li>
-<li><p>map the binary 1:N relationship: save the primary key in the 1 side as a foreign key to the N side relation or table</p></li>
-<li><p>map a binary M:N relation type: create a relation table with its primary key as a combination key from the side of the two tables and a relation attributes.</p></li>
-</ol>
-<p>for the example below: we have the following entity: movie, director(weak), reviewer(weak), genref (weak) relation table: movie_direction, movie_cast, movie_genref, rating(between reviewer and movie)</p>
-<p><img src="/post/2021-03-18-sql/SQL_files/movie-database.png" /></p>
-</div>
+<p>A recommended website: <a href="https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.html">data.world</a></p>
+<p>SQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!). WOW, the fruit has a lot it is a super big supermarket. haha, no worried, go ahead, we group the fruit by the way it stored and apple is stored in the regular temperature, yes, we find it, whole table is in front of you. Wait, there are many kinds of apply but it is ok it is ordered in the price and I will SELECT the one ON SALE. Great, Now, I am ready to check out.</p>
 <div id="case-when" class="section level1">
 <h1>CASE WHEN</h1>
 <ul>
-<li>case when in the <strong>SELECT</strong>: category and rename a column As a movie lover, I love to choose movie around 100 minutes and ‘ok’ with movie less than 200, however never able to finish a movie more than 200 minutes. Please write a sql to see: how many in each and named it as my_choose.</li>
+<li>case when in the <strong>SELECT</strong>: category and rename a column
+As a movie lover, I love to choose movie around 100 minutes and ‘ok’ with movie less than 200,
+however never able to finish a movie more than 200 minutes. Please write a sql to see: how many in each and named it as my_choose.</li>
 </ul>
 <pre class="r"><code>sqldf(
   &quot;
@@ -303,10 +256,13 @@ group by mov_lang&quot;)</code></pre>
 ##    avg_mov
 ## 1 172.1111
 ## 2 207.0000</code></pre>
-<p>CORRELATED/NESTED subquery the correlated subquery is a query use value from the outer query to generate a result<br />
+<p>CORRELATED/NESTED subquery
+the correlated subquery is a query use value from the outer query to generate a result<br />
 1. It can not execute separate from the main query<br />
-2. it run from main query to the inner query iteratively. Subquery usually run from inner to main query 3. it cause the time.<br />
-select all the mov with their mov_time more than its average move time with from the same release county</p>
+2. it run from main query to the inner query iteratively. Subquery usually run from inner to main query
+3. it cause the time.<br />
+select all the mov with their mov_time more than its average move time with from the same
+release county</p>
 <pre class="r"><code>query1 = &quot;
 select mov_title, mov_time
 from movie as outer
@@ -344,7 +300,8 @@ query %&gt;%  sqldf()</code></pre>
 </div>
 <div id="common-table-express-cte" class="section level1">
 <h1>COMMON TABLE EXPRESS (cte)</h1>
-<p>we only want the first and last name of the actor table and substact it as a new table named people. it can narrow down the necessay of the information from the table and used it for many times according to the following neeeded.</p>
+<p>we only want the first and last name of the actor table and substact it as a new table named
+people. it can narrow down the necessay of the information from the table and used it for many times according to the following neeeded.</p>
 <pre class="r"><code>query = &quot;with people (first, last)
 as (
 select act_fname, act_lname
@@ -413,7 +370,9 @@ limit 5&quot;)</code></pre>
 ## 2     1958       335
 ## 3     1961       228</code></pre>
 <ul>
-<li>lag: pick the value of the value in the second position LAG(column, n),LEAD(column, n), FIRST_VALUE(column),LAST_VALUE(Column). find the resigned or return champion’s countries</li>
+<li>lag: pick the value of the value in the second position
+LAG(column, n),LEAD(column, n), FIRST_VALUE(column),LAST_VALUE(Column).
+find the resigned or return champion’s countries</li>
 </ul>
 <pre class="r"><code>sqldf(&quot;
    WITH Weightlifting_Gold AS (
@@ -439,7 +398,8 @@ ORDER BY Year ASC&quot;)</code></pre>
 ## 3 2008      CHN           CHN
 ## 4 2012      CHN           CHN</code></pre>
 <ul>
-<li>paging NTILE(): it is spite the data into pages. For example, if the total number of rows is 50, and there are five groups, each bucket will contain 10 rows.</li>
+<li>paging
+NTILE(): it is spite the data into pages. For example, if the total number of rows is 50, and there are five groups, each bucket will contain 10 rows.</li>
 </ul>
 <pre class="r"><code>sqldf(&quot;
    WITH Weightlifting_Gold AS (
@@ -465,7 +425,8 @@ ORDER BY Year ASC&quot;)</code></pre>
 ## 3 2008      CHN        2
 ## 4 2012      CHN        2</code></pre>
 <ul>
-<li><p>FRAMES a frame to your window function allows you to calculate “moving” metrics, inputs of which slide from row to row. like ROW BETWEEN <em>start</em> and <em>finish</em></p>
+<li>FRAMES
+a frame to your window function allows you to calculate “moving” metrics, inputs of which slide from row to row. like ROW BETWEEN <em>start</em> and <em>finish</em>
 <ul>
 <li>current row:</li>
 <li>n preceding: n rows before the current row</li>

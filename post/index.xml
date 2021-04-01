@@ -69,17 +69,6 @@ For this problem we will begin with the sashelp.baseball data set.</description>
     </item>
     
     <item>
-      <title>SQL</title>
-      <link>/2021/03/18/sql/</link>
-      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/18/sql/</guid>
-      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from [Datacamp], you can use my refer link(https://www.datacamp.com/join-me/MjY2NTU1) to get started and learn new technique together.
-A recommended website: [data.world](https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.htm
-DEFINATION OF RELATION TABLESentity: (table) the object store the information</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
       <link>/2020/12/01/hello-r-markdown/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>

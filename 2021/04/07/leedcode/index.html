@@ -22,6 +22,11 @@
 
 
 
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
 <link rel="stylesheet" href="/css/fonts.css" media="all">
 <link rel="stylesheet" href="/css/main.css" media="all">
 
@@ -57,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">0 min read</span>
+    <span class="article-duration">1 min read</span>
     
 
     <h1 class="article-title">Leedcode</h1>
@@ -71,6 +76,38 @@
 <script src="/2021/04/07/leedcode/index_files/header-attrs/header-attrs.js"></script>
 
 
+<div id="leedcode-67-add-binary" class="section level1">
+<h1>Leedcode 67: Add Binary</h1>
+<p>Given two string a and b, return their sum as a binary string.</p>
+<pre><code>Input: a = &#39;101&#39;, b = &#39;111&#39;
+Output: &#39;1100&#39;</code></pre>
+<p>Idea:
+1. ans can use list and string as the result in a string.
+if use the string: +
+if use the list need to add the <code>"".join()[::-1]</code> at the end</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>while loop instead the for loop: the length is unsure, both use the index</p></li>
+<li><p>var: res, carry, initializa the value.</p></li>
+<li><p>the last value in both list is not add in as the carry is replaced.</p></li>
+</ol>
+<pre class="python"><code>class Solution:
+    def addBinary(self, a: str, b: str) :
+        ans, extra = [],0 
+        i,j=len(a)-1,len(b)-1
+        while i&gt;=0 or j&gt;=0:
+            if i &gt;= 0:
+                extra += int(a[i])
+            if j &gt;= 0:
+                extra += int(b[j])
+            ans.append(extra % 2)
+            extra //= 2
+            i,j = i-1,j-1
+        if extra == 1:
+            ans.append(1)
+        ans = [str(x) for x in ans][::-1]
+        return &#39;&#39;.join(ans)
+        </code></pre>
+</div>
 
     </div>
   </article>
@@ -93,6 +130,18 @@
 
     </div>
     
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
 
     
 

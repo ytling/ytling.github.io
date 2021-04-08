@@ -13,7 +13,9 @@
       <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/04/07/leedcode/</guid>
-      <description></description>
+      <description>Leedcode 67: Add BinaryGiven two string a and b, return their sum as a binary string.
+Input: a = &amp;#39;101&amp;#39;, b = &amp;#39;111&amp;#39;Output: &amp;#39;1100&amp;#39;Idea:1. ans can use list and string as the result in a string.if use the string: +if use the list need to add the &#34;&#34;.join()[::-1] at the end
+while loop instead the for loop: the length is unsure, both use the index</description>
     </item>
     
     <item>

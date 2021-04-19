@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2021-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2021/04/07/leedcode/</loc>
-    <lastmod>2021-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
+    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2021/04/11/uitile/</loc>
+    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2021/04/07/leedcode/</loc>
     <lastmod>2021-04-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/03/26/experimental-design/</loc>
@@ -17,14 +20,14 @@
     <loc>/2021/03/24/missing-data/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/2021/03/22/interview/</loc>
-    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/2021/03/21/my-posting-workflow/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/03/21/sql-sas/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2021/03/18/sql/</loc>
+    <lastmod>2021-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>

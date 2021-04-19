@@ -6,7 +6,18 @@
     <description>Recent content in Posts on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uitile</title>
+      <link>/2021/04/11/uitile/</link>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/04/11/uitile/</guid>
+      <description>report of from the \(X_t\),\(y_t\) are good performance. But has high false positive rate in the testing data. Why?recommend to check the current threshold 0.5 in his logistic regression classifier
+random forest are able to reduce the varianceA. training on different sample of dataB. use random subset of features
+tree belongs to bagging and bagging is used average the noise to reduce the variance.</description>
+    </item>
+    
     <item>
       <title>Leedcode</title>
       <link>/2021/04/07/leedcode/</link>
@@ -35,20 +46,8 @@ Experimental DesignA good experimental design will need:1. treatments are rand
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/24/missing-data/</guid>
-      <description>What types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
+      <description>Missing dataWhat types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
 con: simple implementpro: loss given informationPairwise deletion?assumption： not missing here and there,con：compare with the listwise, the lost information reducedpro：cause inaccurate stand error as the knowingMean substitutionn?</description>
-    </item>
-    
-    <item>
-      <title>Interview</title>
-      <link>/2021/03/22/interview/</link>
-      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/22/interview/</guid>
-      <description>update my interview experience:
-the manager does not ask about a lot regarding the me. But the thing(key word) they care most, like SQL and mongoDB. And ask me to describe the
-why you leave the Bank? If you are a peason left the last decent job, they are mostly like to ask.
-tell me about yourself -&amp;gt; what can you bring to our company?this is not always asking when you are interviewing.</description>
     </item>
     
     <item>
@@ -77,6 +76,17 @@ Add the two numbers and return the sum as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 source
 For this problem we will begin with the sashelp.baseball data set.</description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>/2021/03/18/sql/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/18/sql/</guid>
+      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from [Datacamp], you can use my refer link(https://www.datacamp.com/join-me/MjY2NTU1) to get started and learn new technique together.
+A recommended website: [data.world](https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.htm
+DEFINATION OF RELATION TABLESentity: (table) the object store the information</description>
     </item>
     
     <item>

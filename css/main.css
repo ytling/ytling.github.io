@@ -36,6 +36,7 @@ img {
 .wrapper {
   overflow: hidden;
   position: relative;
+  background: #CBF8DF;
 }
 
 .header {
@@ -140,7 +141,7 @@ img {
 
 .article-content a:hover,
 .article-content a:focus {
-  background: #CBF8DF;
+  background: #13a755;
 }
 
 .article-content hr {
@@ -149,7 +150,7 @@ img {
   height: 1px;
   overflow: hidden;
   border: none;
-  background: #e5e5e5;
+  background: #be7373;
 }
 
 .highlight {

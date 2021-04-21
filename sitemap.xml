@@ -2,10 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-    <lastmod>2021-04-11T00:00:00+00:00</lastmod>
+    <loc>/2021/04/21/%E5%BF%83%E7%90%86/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
+    <loc>/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/cn/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/life/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/en/</loc>
     <lastmod>2021-04-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/04/11/uitile/</loc>
@@ -20,7 +32,7 @@
     <loc>/2021/03/24/missing-data/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/2021/03/21/my-posting-workflow/</loc>
+    <loc>/2021/03/21/blog/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/03/21/sql-sas/</loc>
@@ -28,9 +40,6 @@
   </url><url>
     <loc>/2021/03/18/sql/</loc>
     <lastmod>2021-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>/2020/12/01/hello-r-markdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>

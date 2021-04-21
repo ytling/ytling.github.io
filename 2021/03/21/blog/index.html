@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Blog Down - A Hugo website</title>
+<meta property="og:title" content="Blog Down - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Blog Down</h1>
+
+    
+    <span class="article-date">2021-03-21</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/03/21/blog/index_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#get-start">get start:</a></li>
+<li><a href="#hugo-go">hugo go:</a>
+<ul>
+<li><a href="#config">config</a></li>
+<li><a href="#content">Content</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#templates">Templates</a></li>
+<li><a href="#custom-layouts">Custom layouts</a></li>
+<li><a href="#static-files">Static files</a></li>
+</ul></li>
+<li><a href="#lastly">Lastly</a></li>
+<li><a href="#addin-.">Addin ….</a></li>
+</ul>
+</div>
+
+<div id="get-start" class="section level1">
+<h1>get start:</h1>
+<p>here we go. already started</p>
+</div>
+<div id="hugo-go" class="section level1">
+<h1>hugo go:</h1>
+<p>a tool we we can leverage to generate the static website. The layout below follows my <a href="www.bookdown.org/yihui/blogdown">master</a></p>
+<div id="config" class="section level2">
+<h2>config</h2>
+<p><code>config.*</code>: in the format of . toml or yaml, the file speak globally. it contents parameters inside the <code>[]</code> and it populate the content inside as a variable in the site templates.</p>
+</div>
+<div id="content" class="section level2">
+<h2>Content</h2>
+</div>
+<div id="themes" class="section level2">
+<h2>Themes</h2>
+</div>
+<div id="templates" class="section level2">
+<h2>Templates</h2>
+<p>Hugo theme &lt;— templates + web asset.
+list templates and single templates are mostly common.
+_defaults/ has the following two files:
+- single.html: a page uses to write single thing.</p>
+<pre><code># {{}}: use the hugo variables and functions
+{{ patial &quot;header.html&quot;}}
+&lt;div class = &#39;xxxx&#39;&gt;
+
+.........
+
+&lt;\div&gt;
+
+&lt;main&gt;
+{{ .Content }}  # ---&gt; wrapped in the HTML tag &lt;main&gt;
+&lt;/main&gt;
+
+{{ partial &#39;footer.html&#39; . }}</code></pre>
+<p>the class named xxx used to describe in the .css file under the statics.</p>
+<ul>
+<li>list.html: a list of pages</li>
+</ul>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+{{if not .IsHome }} # ---&gt; if it is not homepages
+&lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+{{ end }}
+
+{{ .Content }}
+
+&lt;ul&gt;
+  {{ range (where .Data.Pages &quot;Section&quot; &quot;!=&quot; &quot;&quot;) }}
+  &lt;li&gt;
+    &lt;span class=&quot;date&quot;&gt;{{ .Date.Format &quot;2006/01/02&quot; }}&lt;/span&gt;
+    &lt;a href=&quot;{{ .URL }}&quot;&gt;{{ .Title }}&lt;/a&gt;
+  &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+
+{{ partial &quot;footer.html&quot; . }}
+</code></pre>
+<p>the function <code>{ range }</code> should not empty, and <strong>Section</strong> in hugo means the first-level of subdir in the content/ , for exmaple content/en/xxx, it is en.
+it will not contents the paged under the content.
+such as we say the <a href="https://*/en" class="uri">https://*/en</a> contains posts in the en only.</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;
+  
+  &lt;\li&gt;
+&lt;\ul&gt;</code></pre>
+<p>.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</p>
+<pre><code>your-website/
+├── config.toml
+├── ...
+├── themes/
+│   └── hugo-xmin/
+│       ├── ...
+│       └── layouts/
+│           ├── ...
+│           └── partials
+│               ├── foot_custom.html
+│               ├── footer.html
+│               ├── head_custom.html
+│               └── header.html
+└── layouts
+    └── partials
+        ├── foot_custom.html
+        └── head_custom.html
+        </code></pre>
+<p>According to yihui, be careful to change the code under theme instead you can modified the both <code>foot_custom.html</code> and
+<code>head_custom.html</code> under the layout.</p>
+</div>
+<div id="custom-layouts" class="section level2">
+<h2>Custom layouts</h2>
+</div>
+<div id="static-files" class="section level2">
+<h2>Static files</h2>
+<p>all files under the static/ are copied to the public/. This is used to save web asset like images, video, CSS and javascript. They can be override.</p>
+</div>
+</div>
+<div id="lastly" class="section level1">
+<h1>Lastly</h1>
+<p>Since I open a blog with the hugo plus git. I spent a lot time researching a simple and easy way to publish a blog. Then I used to the follow steps.<br />
+Assumption:<br />
+experienced R/R studio, git commit, <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">a exiting blog</a>, knowledge in HTML and CSS.</p>
+<p>Procedure:<br />
+1. in R studio, use the <em>Addins</em> –&gt; <em>New Post</em> –&gt; fill in the information(I choose the .Rmd always)<br />
+2. in write the information with the simple <a href="http://rmarkdown.rstudio.com/">markdown syntax</a><br />
+3. <em>Knit</em> the file and test the view in the <em>Viewer</em><br />
+4. good, go to the project dictionary and cmd</p>
+<pre><code>hugo -D 
+# this is used to push the updated files in ./content/post to ./public</code></pre>
+<p>5.re-direct to the <code>.\public</code> and use git commit.</p>
+<pre><code>cd public 
+git add .
+git commit -m &#39;XXXX&#39;
+git push </code></pre>
+<p>6.your new poster is good to go</p>
+<hr />
+</div>
+<div id="addin-." class="section level1">
+<h1>Addin ….</h1>
+<ul>
+<li><p>website is generated from the HTML file, so the correct format of the html is important.
+the <code>knit</code> used with the blogdown library is different from the simple <code>knit</code> in a regular file. My solution is kind werid. I create a Rmd file named different from index.Rmd, copy the file into the new Rmd file and knit with a new html output. Then I rename the original index.Rmd and index.html into XXX_origin and changed the new created Rmd and html into index.XXX. Lastly, I serve_site() to see if it has been changed.</p></li>
+<li><p><code>build_site(local = TRUE)</code>: recompiled the Rmd file. some xxx.Rmd file is not recompiled when xxx.html has relative lastest modified time.However,</p>
+<ul>
+<li>delete the xxx.html and run the <code>knite</code> again.</li>
+<li>click the Addins, ‘Touch file’</li>
+</ul></li>
+<li><p>If you have time-consuming code chunks in any Rmd files, you have to use either of these methods to save time:</p></li>
+<li><p>Turn on knitr’s caching for time-consuming code chunks, i.e., the chunk option cache = TRUE.</p></li>
+<li><p>Do not call <code>build_site()</code>,
+but <code>blogdown::hugo_build()</code> instead. The latter does not compile any Rmd files, but simply runs the hugo command to build the site. <em>Please use this method only if you are sure that your Rmd files do not need to be recompiled</em></p></li>
+<li><p>Draft and future posts are always rendered when local = TRUE, but not when local = FALSE.
+This is for you to preview draft and future posts locally. If you know the Hugo command line, it means the hugo command is called with the flags -D -F, or equivalently, <code>--buildDrafts</code> or <code>--buildFuture</code> [ref] (<a href="https://bookdown.org/yihui/blogdown/local-preview.html" class="uri">https://bookdown.org/yihui/blogdown/local-preview.html</a>)</p></li>
+</ul>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

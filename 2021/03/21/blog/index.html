@@ -38,15 +38,17 @@
       <header class="header">
         <nav class="nav">
   <a href="/" class="nav-logo">
-    <img src="/images/logo.png"
+    <img src="/images/Logo.png"
          width="50"
          height="50"
-         alt="logo">
+         alt="Logo">
   </a>
 
   <ul class="nav-links">
     
     <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://www.github.com/ytling">GitHub</a></li>
     
     <li><a href="/cn/">中文</a></li>
     
@@ -79,7 +81,14 @@
 <li><a href="#config">config</a></li>
 <li><a href="#content">Content</a></li>
 <li><a href="#themes">Themes</a></li>
-<li><a href="#templates">Templates</a></li>
+<li><a href="#templates">Templates</a>
+<ul>
+<li><a href="#defaultlist.html">_default/list.html:</a></li>
+<li><a href="#terms.html">terms.html</a></li>
+<li><a href="#partials">Partials/</a></li>
+<li><a href="#stores-the-templates-reused-in-other-html-pages-by-the-partial-function.">.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</a></li>
+<li><a href="#footer.html">footer.html</a></li>
+</ul></li>
 <li><a href="#custom-layouts">Custom layouts</a></li>
 <li><a href="#static-files">Static files</a></li>
 </ul></li>
@@ -110,7 +119,8 @@
 <p>Hugo theme &lt;— templates + web asset.
 list templates and single templates are mostly common.
 _defaults/ has the following two files:
-- single.html: a page uses to write single thing.</p>
+### _default/single.html:
+a page uses to write single thing.</p>
 <pre><code># {{}}: use the hugo variables and functions
 {{ patial &quot;header.html&quot;}}
 &lt;div class = &#39;xxxx&#39;&gt;
@@ -125,9 +135,10 @@ _defaults/ has the following two files:
 
 {{ partial &#39;footer.html&#39; . }}</code></pre>
 <p>the class named xxx used to describe in the .css file under the statics.</p>
-<ul>
-<li>list.html: a list of pages</li>
-</ul>
+<div id="defaultlist.html" class="section level3">
+<h3>_default/list.html:</h3>
+<p>a single list.html will generate multiple lists of pages according to the sections and taxonomy(catergories and tags) on the website. The list items are representes in the HTML tags <code>&lt;li&gt;</code>
+and <code>&lt;ul&gt;</code>.</p>
 <pre><code>{{ partial &quot;header.html&quot; . }}
 
 {{if not .IsHome }} # ---&gt; if it is not homepages
@@ -155,7 +166,90 @@ such as we say the <a href="https://*/en" class="uri">https://*/en</a> contains 
   
   &lt;\li&gt;
 &lt;\ul&gt;</code></pre>
-<p>.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</p>
+</div>
+<div id="terms.html" class="section level3">
+<h3>terms.html</h3>
+<p>home page of tags/taxonomy terms. <code>.Data.Terms</code> stores all terms under a taxonomy(a catergry name). For example, you have many blogs with category blog, then hugo will automatic detect and collect them. The term is passes to hugo function <code>relURL</code> via pip <code>|</code> to make it relative, relative links are independ of the domain name.</p>
+</div>
+<div id="partials" class="section level3">
+<h3>Partials/</h3>
+<p>this is a dir collects pieces of the html used frequently.</p>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+&lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+
+&lt;ul class=&quot;terms&quot;&gt;
+  {{ range $key, $value := .Data.Terms }}
+  &lt;li&gt;
+    &lt;a href=&#39;{{ (print &quot;/&quot; $.Data.Plural &quot;/&quot; $key) | relURL }}&#39;&gt;
+      {{ $key }}
+    &lt;/a&gt;
+    ({{ len $value }})
+  &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+
+{{ partial &quot;footer.html&quot; . }}</code></pre>
+</div>
+<div id="stores-the-templates-reused-in-other-html-pages-by-the-partial-function." class="section level3">
+<h3>.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;{{ .Site.LanguageCode }}&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;{{ .Title }} | {{ .Site.Title }}&lt;/title&gt;
+    &lt;link href=&#39;{{ &quot;/css/style.css&quot; | relURL }}&#39;
+      rel=&quot;stylesheet&quot; /&gt;
+    &lt;link href=&#39;{{ &quot;/css/fonts.css&quot; | relURL }}&#39;
+      rel=&quot;stylesheet&quot; /&gt;
+    {{ partial &quot;head_custom.html&quot; . }}
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;nav&gt;
+    &lt;ul class=&quot;menu&quot;&gt;
+      {{ range .Site.Menus.main }}
+      &lt;li&gt;&lt;a href=&quot;{{ .URL | relURL }}&quot;&gt;{{ .Name }}&lt;/a&gt;&lt;/li&gt;
+      {{ end }}
+    &lt;/ul&gt;
+    &lt;hr/&gt;
+    &lt;/nav&gt;
+    </code></pre>
+<p><code>.Site.Menus.main</code> can used in the <code>config.toml</code></p>
+<pre><code>[[menu.main]]
+    name = &#39;Home&#39;
+    url = &quot;/&quot;
+    
+[[menu.main]]
+    name = &#39;About&#39;
+    url = &quot;/about/&quot;
+</code></pre>
+<p>it will be</p>
+<pre><code>&lt;ul class=&quot;menu&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/about/&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="footer.html" class="section level3">
+<h3>footer.html</h3>
+<pre><code>  &lt;footer&gt;
+  {{ partial &quot;foot_custom.html&quot; . }}
+  {{ with .Site.Params.footer }}
+  &lt;hr/&gt;
+  {{ . | markdownify }}
+  {{ end }}
+  &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>.Site.Params.footer</code> to generate a page footer. <code>with {{.}}{{end}}</code>is shorthand for the <code>{{if.Site.Params.footer}}{{.Site.Params.footer}}{{end}}</code> this saves you from typing the variable
+twice by using the <code>{{.}}</code> as a placeholder for the variable as a site parameter in the <code>config.xxx</code> . The additional function <code>markdownify</code> convert the markdown to HTML. this sequence ensure that we can add a <code>footer</code> parameter in the <code>config.xxx</code></p>
+<pre><code>[params]
+    footer = &quot;&amp;copy; [Yihui Xie](https://yihui.org) 2017&quot;</code></pre>
+</div>
+</div>
+<div id="custom-layouts" class="section level2">
+<h2>Custom layouts</h2>
 <pre><code>your-website/
 ├── config.toml
 ├── ...
@@ -175,21 +269,22 @@ such as we say the <a href="https://*/en" class="uri">https://*/en</a> contains 
         └── head_custom.html
         </code></pre>
 <p>According to yihui, be careful to change the code under theme instead you can modified the both <code>foot_custom.html</code> and
-<code>head_custom.html</code> under the layout.</p>
-</div>
-<div id="custom-layouts" class="section level2">
-<h2>Custom layouts</h2>
+<code>head_custom.html</code> under the <code>root\layout\partials</code>.</p>
 </div>
 <div id="static-files" class="section level2">
 <h2>Static files</h2>
-<p>all files under the static/ are copied to the public/. This is used to save web asset like images, video, CSS and javascript. They can be override.</p>
+<p>all files under the static/ are copied to the public/. This is used to save web asset like images, video, CSS and javascript. They can be override. For example, an image <code>static/subdir/xxx.png</code> can linked to <img src="subdir/xxx.png" />. It depends on the <code>baseurl</code> in <code>confi.xxx</code>,</p>
+<pre><code>baseurl = &quot;http://example.com/subdir/&quot;
+
+# this link to the /subdir/xxx.png</code></pre>
+<p>Attention Please: do not put <code>statics/about/index.Rmd</code> because it will overwrite the <code>content/about.md</code> as the file under <code>static/</code> will be copied to <code>public/</code>.</p>
 </div>
 </div>
 <div id="lastly" class="section level1">
 <h1>Lastly</h1>
 <p>Since I open a blog with the hugo plus git. I spent a lot time researching a simple and easy way to publish a blog. Then I used to the follow steps.<br />
 Assumption:<br />
-experienced R/R studio, git commit, <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">a exiting blog</a>, knowledge in HTML and CSS.</p>
+experienced R/R studio, git commit, <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">a exiting blog</a>, knowledge in HTML and CSS. A image w</p>
 <p>Procedure:<br />
 1. in R studio, use the <em>Addins</em> –&gt; <em>New Post</em> –&gt; fill in the information(I choose the .Rmd always)<br />
 2. in write the information with the simple <a href="http://rmarkdown.rstudio.com/">markdown syntax</a><br />
@@ -226,7 +321,6 @@ This is for you to preview draft and future posts locally. If you know the Hugo 
 
     </div>
   </article>
-
   
 
 

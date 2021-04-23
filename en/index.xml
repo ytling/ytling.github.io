@@ -6,16 +6,25 @@
     <description>Recent content in Ens on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Uitile</title>
-      <link>/2021/04/11/uitile/</link>
+      <title>cv&#43;resume</title>
+      <link>/2021/04/22/resume/</link>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/04/22/resume/</guid>
+      <description>To who may read
+I am writing to express my keen interest in the Junior Data Science Developer role in the HQ 790 bay, Toronto, ON.
+About me: I am an open-minded person with high curiosity to natural object, denoted by human. I respect in the impact of gene and environment and try single healthy experiment on myself to understand some hard theories. Also, a human working Single-threaded process, by this, I mean my quaintly of the work done has negative(?</description>
+    </item>
+    
+    <item>
+      <title>Untitle</title>
+      <link>/2021/04/11/untitle/</link>
       <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/04/11/uitile/</guid>
-      <description>report of from the \(X_t\),\(y_t\) are good performance. But has high false positive rate in the testing data. Why?recommend to check the current threshold 0.5 in his logistic regression classifier
-random forest are able to reduce the varianceA. training on different sample of dataB. use random subset of features
-tree belongs to bagging and bagging is used average the noise to reduce the variance.</description>
+      <guid>/2021/04/11/untitle/</guid>
+      <description>Decision TreeHackerRankvue meetingcontigency tableleedcodereport of from the \(X_t\),\(y_t\) are good performance. But has high false positive rate in the testing data. Why?random forest are able to reduce the variancea plot x (epoch), y(loss) group by the different learning rate: 01, and 1e-10. the first group decrease and increasing at one point, the second decrease steeply and converge at a certain point.</description>
     </item>
     
     <item>
@@ -56,9 +65,9 @@ Experimental DesignA good experimental design will need:1. treatments are rand
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentThemesTemplatesCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
+      <description>get start:hugo go:configContentThemesTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
 hugo go:a tool we we can leverage to generate the static website. The layout below follows my master
-configconfig.*: in the format of . toml or yaml, the file speak globally. it contents parameters inside the [] and it populate the content inside as a variable in the site templates.</description>
+configconfig.</description>
     </item>
     
     <item>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>learn on A Hugo website</title>
+    <link>/categories/learn/</link>
+    <description>Recent content in learn on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/learn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog Down</title>
+      <link>/2021/03/21/blog/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/21/blog/</guid>
+      <description>get start:hugo go:configContentThemesTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
+hugo go:a tool we we can leverage to generate the static website. The layout below follows my master
+configconfig.</description>
+    </item>
+    
+  </channel>
+</rss>

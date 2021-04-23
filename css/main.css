@@ -194,7 +194,7 @@ img {
 .archive-item-link {
   display: inline-block;
   text-decoration: none;
-  font-size: 21px;
+  font-size: 14px;
   font-weight: bold;
   color: #222;
   padding: 5px 0;
@@ -249,6 +249,20 @@ img {
   position: relative;
   top: 6px;
   margin-left: 2px;
+}
+
+
+.toc {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color:#FFF;
+}
+
+.toc { display: none; } /* Hide the full TOC by default */
+
+.toc:hover {
+  display: block; /* Show it on hover */
 }
 
 @media (min-width: 600px) {

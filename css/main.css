@@ -252,18 +252,7 @@ img {
 }
 
 
-.toc {
-  position: fixed;
-  right: 0;
-  top: 0;
-  background-color:#FFF;
-}
 
-.toc { display: none; } /* Hide the full TOC by default */
-
-.toc:hover {
-  display: block; /* Show it on hover */
-}
 
 @media (min-width: 600px) {
   .header {

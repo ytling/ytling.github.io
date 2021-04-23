@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
-    <lastmod>2021-04-22T00:00:00+00:00</lastmod>
+    <loc>/cn/</loc>
+    <lastmod>2021-04-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2021/04/23/%E7%BB%9D%E5%AF%B9%E6%B0%B8%E8%BF%9C%E5%92%8C%E7%9B%B8%E5%AF%B9%E6%B0%B8%E8%BF%9C/</loc>
+    <lastmod>2021-04-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/04/22/resume/</loc>
     <lastmod>2021-04-22T00:00:00+00:00</lastmod>
@@ -12,9 +15,6 @@
     <lastmod>2021-04-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/cn/</loc>
     <lastmod>2021-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/life/</loc>
@@ -67,6 +67,9 @@
   </url><url>
     <loc>/2016/12/30/a-plain-markdown-post/</loc>
     <lastmod>2016-12-30T21:49:57-07:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
     <loc>/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>

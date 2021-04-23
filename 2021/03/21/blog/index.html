@@ -46,9 +46,9 @@
 
   <ul class="nav-links">
     
-    <li><a href="/about/">About</a></li>
+    <li><a href="/categories/">Catergory</a></li>
     
-    <li><a href="https://www.github.com/ytling">GitHub</a></li>
+    <li><a href="/en/">English</a></li>
     
     <li><a href="/cn/">中文</a></li>
     
@@ -79,8 +79,10 @@
 <li><a href="#hugo-go">hugo go:</a>
 <ul>
 <li><a href="#config">config</a></li>
-<li><a href="#content">Content</a></li>
-<li><a href="#themes">Themes</a></li>
+<li><a href="#content">Content</a>
+<ul>
+<li><a href="#front-matter">Front matter</a></li>
+</ul></li>
 <li><a href="#templates">Templates</a>
 <ul>
 <li><a href="#defaultlist.html">_default/list.html:</a></li>
@@ -110,9 +112,20 @@
 </div>
 <div id="content" class="section level2">
 <h2>Content</h2>
+<p>Content here has two: physical content means the real folder called content containing all your posting blogs. another content means the content of the artial and also means the each file you create to contain the things. The second content is in the format: .md: also used in the github. .Rmd: used best in rstudio. .markdown: not really sure.</p>
+<div id="front-matter" class="section level3">
+<h3>Front matter</h3>
+<p>website is plainly a html file here render from the .md or .Rmd files use to rendered. Front matter is used for define your post in many parameters. Used Addins in Rstdui is good. And most confused is <code>slug</code> and <code>title</code>. <code>title</code> : the title of the artical. <code>slug</code>: it is for the Permalinks. For this I mean, when open the website, you will see the <a href="http:\\slug" class="uri">http:\\slug</a> to direct to your responding webpage. You can change the</p>
+<pre><code>permalinks:
+  cn: /:year/:month/:day/:slug/
+  en: /:year/:month/:day/:slug/
+</code></pre>
+<p>into</p>
+<pre><code>permalinks:
+  cn: /:year/:month/:day/:title/
+  en: /:year/:month/:day/:title/</code></pre>
+<p>to used the title in the front matter to produce the link for the website. However, I do not think it is a good idea as we not always want a long link if a title is long.</p>
 </div>
-<div id="themes" class="section level2">
-<h2>Themes</h2>
 </div>
 <div id="templates" class="section level2">
 <h2>Templates</h2>

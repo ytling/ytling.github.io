@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Hugo website</title>
+    <title>About Me on A Hugo website</title>
     <link>/</link>
-    <description>Recent content on A Hugo website</description>
+    <description>Recent content in About Me on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 May 2016 21:48:51 -0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>绝对永远和相对永远</title>
+      <link>/2021/04/23/%E7%BB%9D%E5%AF%B9%E6%B0%B8%E8%BF%9C%E5%92%8C%E7%9B%B8%E5%AF%B9%E6%B0%B8%E8%BF%9C/</link>
+      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/04/23/%E7%BB%9D%E5%AF%B9%E6%B0%B8%E8%BF%9C%E5%92%8C%E7%9B%B8%E5%AF%B9%E6%B0%B8%E8%BF%9C/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>cv&#43;resume</title>
       <link>/2021/04/22/resume/</link>
@@ -84,9 +93,8 @@ Experimental DesignA good experimental design will need:1. treatments are rand
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentThemesTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
-hugo go:a tool we we can leverage to generate the static website. The layout below follows my master
-configconfig.</description>
+      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
+hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
     </item>
     
     <item>

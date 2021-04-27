@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>SQL - A Hugo website</title>
+<meta property="og:title" content="SQL - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ytling">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/lynne-lin-9bb919100/">Linkedin</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">14 min read</span>
+    
+
+    <h1 class="article-title">SQL</h1>
+
+    
+    <span class="article-date">2021-03-18</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/03/18/sql/index_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#case-when">CASE WHEN</a></li>
+<li><a href="#subquery">SUBQUERY</a></li>
+<li><a href="#common-table-express-cte">COMMON TABLE EXPRESS (cte)</a></li>
+<li><a href="#window-fun">WINDOW FUN</a></li>
+<li><a href="#rollup-and-cube">ROLLUP and CUBE</a></li>
+<li><a href="#tablesample">TABLESAMPLE</a></li>
+<li><a href="#unpivotrow-to-column">UNPIVOT:ROW TO COLUMN</a></li>
+<li><a href="#pivotcolume-to-row">PIVOT:COLUME TO ROW</a></li>
+</ul>
+</div>
+
+<p>Some information contains from [Datacamp], you can use my refer link(<a href="https://www.datacamp.com/join-me/MjY2NTU1" class="uri">https://www.datacamp.com/join-me/MjY2NTU1</a>) to get started and learn new technique together.</p>
+<p>A recommended website: <a href="https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.html">data.world</a></p>
+<p>SQL has a very interesting work flow. This is like going to supermarket. You first pick FROM the supermarket (table) you will go shopping. Then WHERE you go for the apple, you go to the fruit and not not to go for other section (because you need the apple!). WOW, the fruit has a lot it is a super big supermarket. haha, no worried, go ahead, we group the fruit by the way it stored and apple is stored in the regular temperature, yes, we find it, whole table is in front of you. Wait, there are many kinds of apply but it is ok it is ordered in the price and I will SELECT the one ON SALE. Great, Now, I am ready to check out.</p>
+<div id="case-when" class="section level1">
+<h1>CASE WHEN</h1>
+<ul>
+<li>case when in the <strong>SELECT</strong>: category and rename a column
+As a movie lover, I love to choose movie around 100 minutes and ‘ok’ with movie less than 200,
+however never able to finish a movie more than 200 minutes. Please write a sql to see: how many in each and named it as my_choose.</li>
+</ul>
+<pre class="r"><code>sqldf(
+  &quot;
+  select 
+    case when mov_time &lt; 100 then &#39;love&#39;
+         when mov_time between 100 and 200 then &#39;ok&#39;
+    else &#39;others&#39; end as my_choose,
+     count(mov_id)
+   from movie
+   group by my_choose
+   limit 5
+  &quot;
+)</code></pre>
+<pre><code>##   my_choose count(mov_id)
+## 1      love             2
+## 2        ok            24
+## 3    others             2</code></pre>
+<pre class="r"><code>query =  &quot;
+  select 
+    *
+   from movie
+   where mov_lang = 
+   case when mov_time &lt; 100 then mov_lang
+         when mov_rel_country = &#39;UK&#39; then mov_lang
+    else NULL
+    end
+limit 5&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+<p>in other way to express the same query</p>
+<pre class="r"><code>query =
+  &quot;select *
+   from movie
+   where mov_rel_country = &#39;UK&#39;
+   or mov_time &lt; 100&quot;
+
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+<p>for this time, I would like to learn English by watching the English movie, thus I want to choose the movie with English language and the duration less than 100 minutes also want to see the rating , sorted to choose the best one to watch</p>
+<pre class="r"><code>sqldf(
+  &quot;
+  select
+    case when mov_time &lt; 100 then &#39;love&#39;
+         when mov_time between 100 and 200 then &#39;ok&#39;
+    else &#39;others&#39; end as my_choose,
+   rev_stars
+   from movie
+   natural join rating
+   where mov_lang like &#39;%English%&#39;
+   order by rev_stars
+   limit 5
+
+  &quot;
+)</code></pre>
+<pre><code>##   my_choose rev_stars
+## 1        ok        NA
+## 2      love        NA
+## 3        ok       3.0
+## 4        ok       4.0
+## 5        ok       6.7</code></pre>
+<ul>
+<li>case when used in <strong>WHERE</strong>: use as a filter, you can not use alias here, not very open.</li>
+</ul>
+<pre class="r"><code>sqldf(
+  &quot;
+  select
+   *
+   from movie
+   where
+   case when 
+   mov_time &lt; 100 then &#39;less&#39; 
+   when mov_time between 100 and 200
+   then &#39;more&#39; end = &#39;less&#39;&quot;
+)</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+<ul>
+<li>count with case when to calculate number</li>
+</ul>
+<pre class="r"><code>sqldf(&quot;
+select count(case when act_gender like &#39;%M%&#39; then mov_id end) as  male_actor,
+       count(case when act_gender like &#39;%F%&#39; then mov_id end) as female_actor,
+       gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title
+limit 5&quot;)</code></pre>
+<pre><code>##   male_actor female_actor gen_title
+## 1          0            1    Action
+## 2          2            0 Adventure
+## 3          0            1 Animation
+## 4          1            0    Comedy
+## 5          2            0     Crime</code></pre>
+<p>or</p>
+<pre class="r"><code>sqldf(&quot;
+select sum(case when act_gender like &#39;%M%&#39;  then 1 else 0  end) as  male_actor,
+       sum(case when act_gender like &#39;%F%&#39; then 1 else 0 end ) as female_actor,
+    gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title
+limit 5&quot;)</code></pre>
+<pre><code>##   male_actor female_actor gen_title
+## 1          0            1    Action
+## 2          2            0 Adventure
+## 3          0            1 Animation
+## 4          1            0    Comedy
+## 5          2            0     Crime</code></pre>
+<p>In R or Python, you have the ability to calculate a SUM of logical values (i.e., TRUE/FALSE) directly. In SQL, you have to convert these values into 1 and 0 before calculating a sum. This can be done using a CASE statement.</p>
+<ul>
+<li>Calculating percent with CASE and AVG</li>
+</ul>
+<pre class="r"><code># AVG(CASE WHEN condition_is_met THEN 1
+#          WHEN condition_is_not_met THEN 0 END)</code></pre>
+</div>
+<div id="subquery" class="section level1">
+<h1>SUBQUERY</h1>
+<p>The definition of the subquery:<br />
+* a query nested inside another query<br />
+* it can be used in : SELECT, FROM , WHERE clause<br />
+* subquery in WHERE as a filter<br />
++ EXISTS/NOT EXITS: <code>WHERE EXITS ()</code><br />
++ IN/ NOT IN: <code>WHERE col IN ()</code><br />
++ ALL,ANY,SOME: <code>AND col &gt;= ALL()</code><br />
++ scaler Subquery, the result from the query is a single value<br />
+* subquery in FROM as a new table, we recommend to use the CTE in section3</p>
+<p>uncorrelated scaler subquery in WHERE clause</p>
+<pre class="r"><code>sqldf(&quot;select mov_title, mov_lang,avg(mov_time) as avg_mov
+from movie
+where mov_time &gt;(select avg(mov_time)
+                   from movie)
+group by mov_lang&quot;)</code></pre>
+<pre><code>##                                              mov_title          mov_lang
+## 1  Lawrence of Arabia                                   English         
+## 2  Seven Samurai                                        Japanese        
+##    avg_mov
+## 1 172.1111
+## 2 207.0000</code></pre>
+<p>CORRELATED/NESTED subquery
+the correlated subquery is a query use value from the outer query to generate a result<br />
+1. It can not execute separate from the main query<br />
+2. it run from main query to the inner query iteratively. Subquery usually run from inner to main query
+3. it cause the time.<br />
+select all the mov with their mov_time more than its average move time with from the same
+release county</p>
+<pre class="r"><code>query1 = &quot;
+select mov_title, mov_time
+from movie as outer
+where outer.mov_time &gt; (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 &quot;
+query1 %&gt;% sqldf()</code></pre>
+<pre><code>##                                               mov_title mov_time
+## 1   Lawrence of Arabia                                       216
+## 2   The Deer Hunter                                          183
+## 3   Amadeus                                                  160
+## 4   Eyes Wide Shut                                           159
+## 5   Boogie Nights                                            155
+## 6   The Shawshank Redemption                                 142
+## 7   Titanic                                                  194
+## 8   Aliens                                                   137
+## 9   Avatar                                                   162
+## 10  Seven Samurai                                            207
+## 11  Braveheart                                               178</code></pre>
+<pre class="r"><code>query2 = &quot;
+select mov_title, mov_time, avg(mov_time)
+from movie as outer
+where outer.mov_time &gt; (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 &quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##   mov_id                                            mov_title mov_year mov_time
+## 1    911  Annie Hall                                              1977       93
+## 2    918  Trainspotting                                           1996       94
+##            mov_lang   mov_dt_rel mov_rel_country
+## 1  English           1977-04-20              USA
+## 2  English           1996-02-23               UK</code></pre>
+</div>
+<div id="common-table-express-cte" class="section level1">
+<h1>COMMON TABLE EXPRESS (cte)</h1>
+<p>we only want the first and last name of the actor table and substact it as a new table named
+people. it can narrow down the necessay of the information from the table and used it for many times according to the following neeeded.</p>
+<pre class="r"><code>query = &quot;with people (first, last)
+as (
+select act_fname, act_lname
+from actor
+)
+select first
+from people&quot;
+
+query %&gt;%  sqldf</code></pre>
+<pre><code>##                     first
+## 1   James                
+## 2   Deborah              
+## 3   Peter                
+## 4   Robert               
+## 5   F. Murray            
+## 6   Harrison             
+## 7   Nicole               
+## 8   Stephen              
+## 9   Jack                 
+## 10  Mark                 
+## 11  Woody                
+## 12  Claire               
+## 13  Tim                  
+## 14  Kevin                
+## 15  Kate                 
+## 16  Robin                
+## 17  Jon                  
+## 18  Ewan                 
+## 19  Christian            
+## 20  Maggie               
+## 21  Dev                  
+## 22  Sigourney            
+## 23  David                
+## 24  Ali</code></pre>
+</div>
+<div id="window-fun" class="section level1">
+<h1>WINDOW FUN</h1>
+<ul>
+<li>Slide</li>
+</ul>
+<p>OVER() cause allow an aggregate function to a dataset and similar to the subquery and run faster than the subqueries.</p>
+<p>Numbering Olympic games in descending order</p>
+<pre class="r"><code>sqldf(&quot;
+SELECT
+  Year,
+  -- Assign the lowest numbers to the most recent years
+  ROW_NUMBER() OVER (order by year desc) AS Row_N
+FROM (
+  SELECT DISTINCT Year
+  FROM Summer_Medals
+) AS Years
+ORDER BY Year
+limit 5&quot;)</code></pre>
+<pre><code>##   Year Row_N
+## 1 1896    27
+## 2 1900    26
+## 3 1904    25
+## 4 1908    24
+## 5 1912    23</code></pre>
+<pre class="r"><code>sqldf(&quot;SELECT mov_year,
+      sum(mov_time)over( order by mov_year Rows between 1 preceding and current row) as newcolumn
+      FROM movie
+      Limit 3&quot;)</code></pre>
+<pre><code>##   mov_year newcolumn
+## 1     1954       207
+## 2     1958       335
+## 3     1961       228</code></pre>
+<ul>
+<li>lag: pick the value of the value in the second position
+LAG(column, n),LEAD(column, n), FIRST_VALUE(column),LAST_VALUE(Column).
+find the resigned or return champion’s countries</li>
+</ul>
+<pre class="r"><code>sqldf(&quot;
+   WITH Weightlifting_Gold AS (
+   SELECT
+    -- Return each year&#39;s champions&#39; countries
+    Year,
+    Country AS champion
+  FROM Summer_Medals
+  WHERE
+    Discipline = &#39;Weightlifting&#39; AND
+    Event = &#39;69KG&#39; AND
+    Gender = &#39;Men&#39; AND
+    Medal = &#39;Gold&#39;)
+SELECT
+  Year, Champion,
+  lag(Champion) OVER
+   (order by year ASC) AS Last_Champion
+FROM Weightlifting_Gold
+ORDER BY Year ASC&quot;)</code></pre>
+<pre><code>##   Year champion Last_Champion
+## 1 2000      BUL          &lt;NA&gt;
+## 2 2004      CHN           BUL
+## 3 2008      CHN           CHN
+## 4 2012      CHN           CHN</code></pre>
+<ul>
+<li>paging
+NTILE(): it is spite the data into pages. For example, if the total number of rows is 50, and there are five groups, each bucket will contain 10 rows.</li>
+</ul>
+<pre class="r"><code>sqldf(&quot;
+   WITH Weightlifting_Gold AS (
+   SELECT
+    -- Return each year&#39;s champions&#39; countries
+    Year,
+    Country AS champion
+  FROM Summer_Medals
+  WHERE
+    Discipline = &#39;Weightlifting&#39; AND
+    Event = &#39;69KG&#39; AND
+    Gender = &#39;Men&#39; AND
+    Medal = &#39;Gold&#39;)
+SELECT
+  Year, Champion,
+  NTILE(2) OVER
+   (order by year ASC) AS quantile
+FROM Weightlifting_Gold
+ORDER BY Year ASC&quot;)</code></pre>
+<pre><code>##   Year champion quantile
+## 1 2000      BUL        1
+## 2 2004      CHN        1
+## 3 2008      CHN        2
+## 4 2012      CHN        2</code></pre>
+<ul>
+<li>FRAMES
+a frame to your window function allows you to calculate “moving” metrics, inputs of which slide from row to row. like ROW BETWEEN <em>start</em> and <em>finish</em>
+<ul>
+<li>current row:</li>
+<li>n preceding: n rows before the current row</li>
+<li>n following: n rows after the current row</li>
+</ul></li>
+</ul>
+<p><strong>RANGE BETWEEN</strong> treat the duplicates as a the same order.</p>
+<p>Crosstab: Compute a simple cross-tabulation of two (or more) factors. By default computes a frequency table of the factors unless an array of values and an aggregation function are passed.<br />
+the postSQL can use the extending function to do the table. the format is long format we need to transfer to wide format. in postSQL we use the: crosstab.</p>
+<pre class="r"><code>query = &quot;SELECT
+         time, subject, val,
+         SUM(val) OVER (PARTITION BY subject ORDER BY time
+                        ROWS UNBOUNDED PRECEDING)
+           AS running_total,
+         AVG(val) OVER (PARTITION BY subject ORDER BY time
+                        ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
+           AS running_average
+       FROM observations&quot;</code></pre>
+<p>Pivot Table: Create a spreadsheet-style pivot table as a DataFrame. The levels in the pivot table will be stored in MultiIndex objects, Hierarchical indexes on the index and columns of the result DataFrame.</p>
+<pre class="r"><code># Connect to the default postgres database
+
+pq = &quot;CREATE TABLE t (Section CHAR(1), Status VARCHAR(10), Count integer);
+
+INSERT INTO t VALUES (&#39;A&#39;, &#39;Active&#39;,   1);
+INSERT INTO t VALUES (&#39;A&#39;, &#39;Inactive&#39;, 2);
+INSERT INTO t VALUES (&#39;B&#39;, &#39;Active&#39;,   4);
+INSERT INTO t VALUES (&#39;B&#39;, &#39;Inactive&#39;, 5);
+
+SELECT row_name AS Section,
+       category_1::integer AS Active,
+       category_2::integer AS Inactive
+FROM crosstab(&#39;select section::text, status, count::text from t&#39;,2)
+            AS ct (row_name text, category_1 text, category_2 text)&quot;</code></pre>
+</div>
+<div id="rollup-and-cube" class="section level1">
+<h1>ROLLUP and CUBE</h1>
+<p>ROLLUP and CUBE are used in GROUP BY clause</p>
+<p><code>GROUP BY ROLLUP(group1, group2)</code>: group2 is hierarchy within the group1</p>
+<p><code>GROUP BY CUBE(group1,group2)</code>: there is no clear relation between the two groups</p>
+</div>
+<div id="tablesample" class="section level1">
+<h1>TABLESAMPLE</h1>
+<p><code>SELECT * FROM table TABLESAMPLE(5)</code>: random get the 5 percentage within the table.</p>
+</div>
+<div id="unpivotrow-to-column" class="section level1">
+<h1>UNPIVOT:ROW TO COLUMN</h1>
+<ul>
+<li>create a table that lists all of the columns from the original table as a row in a new table</li>
+<li>cross join it with the wide table to create an expanded view</li>
+<li>pulls data from the correct column</li>
+</ul>
+<pre class="r"><code>query =
+  &quot;SELECT *
+FROM Simpson_wide
+Limit 5
+&quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##     Age Cases_White Deaths_White Cases_Others Deaths_Others
+## 1   0-4       0.239        0.533        0.761         0.467
+## 2 5--17       0.190        0.091        0.810         0.909
+## 3 18-29       0.298        0.189        0.702         0.811
+## 4 30-39       0.265        0.164        0.735         0.836
+## 5 40-49       0.265        0.164        0.735         0.836</code></pre>
+<pre class="r"><code>Catable = data.frame( &#39;Category&#39; = colnames(Simpson_wide)[2:5])
+query = &quot;
+SELECT
+*
+FROM
+Simpson_wide
+CROSS JOIN Catable
+
+&quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##         Age Cases_White Deaths_White Cases_Others Deaths_Others      Category
+## 1       0-4       0.239        0.533        0.761         0.467   Cases_White
+## 2       0-4       0.239        0.533        0.761         0.467  Deaths_White
+## 3       0-4       0.239        0.533        0.761         0.467  Cases_Others
+## 4       0-4       0.239        0.533        0.761         0.467 Deaths_Others
+## 5     5--17       0.190        0.091        0.810         0.909   Cases_White
+## 6     5--17       0.190        0.091        0.810         0.909  Deaths_White
+## 7     5--17       0.190        0.091        0.810         0.909  Cases_Others
+## 8     5--17       0.190        0.091        0.810         0.909 Deaths_Others
+## 9     18-29       0.298        0.189        0.702         0.811   Cases_White
+## 10    18-29       0.298        0.189        0.702         0.811  Deaths_White
+## 11    18-29       0.298        0.189        0.702         0.811  Cases_Others
+## 12    18-29       0.298        0.189        0.702         0.811 Deaths_Others
+## 13    30-39       0.265        0.164        0.735         0.836   Cases_White
+## 14    30-39       0.265        0.164        0.735         0.836  Deaths_White
+## 15    30-39       0.265        0.164        0.735         0.836  Cases_Others
+## 16    30-39       0.265        0.164        0.735         0.836 Deaths_Others
+## 17    40-49       0.265        0.164        0.735         0.836   Cases_White
+## 18    40-49       0.265        0.164        0.735         0.836  Deaths_White
+## 19    40-49       0.265        0.164        0.735         0.836  Cases_Others
+## 20    40-49       0.265        0.164        0.735         0.836 Deaths_Others
+## 21    50-64       0.364        0.164        0.636         0.836   Cases_White
+## 22    50-64       0.364        0.164        0.636         0.836  Deaths_White
+## 23    50-64       0.364        0.164        0.636         0.836  Cases_Others
+## 24    50-64       0.364        0.164        0.636         0.836 Deaths_Others
+## 25    65-74       0.459        0.408        0.541         0.592   Cases_White
+## 26    65-74       0.459        0.408        0.541         0.592  Deaths_White
+## 27    65-74       0.459        0.408        0.541         0.592  Cases_Others
+## 28    65-74       0.459        0.408        0.541         0.592 Deaths_Others
+## 29    75-84       0.554        0.521        0.446         0.479   Cases_White
+## 30    75-84       0.554        0.521        0.446         0.479  Deaths_White
+## 31    75-84       0.554        0.521        0.446         0.479  Cases_Others
+## 32    75-84       0.554        0.521        0.446         0.479 Deaths_Others
+## 33      85+       0.696        0.676        0.304         0.324   Cases_White
+## 34      85+       0.696        0.676        0.304         0.324  Deaths_White
+## 35      85+       0.696        0.676        0.304         0.324  Cases_Others
+## 36      85+       0.696        0.676        0.304         0.324 Deaths_Others
+## 37 ALL AGES       0.354        0.495        0.646         0.505   Cases_White
+## 38 ALL AGES       0.354        0.495        0.646         0.505  Deaths_White
+## 39 ALL AGES       0.354        0.495        0.646         0.505  Cases_Others
+## 40 ALL AGES       0.354        0.495        0.646         0.505 Deaths_Others</code></pre>
+<pre class="r"><code>Catable = data.frame( &#39;Category&#39; = colnames(Simpson_wide)[2:5])
+query = &quot;
+
+SELECT   Catable.*,
+SW.Age,
+CASE  Catable.Category
+WHEN &#39;Cases_White&#39; THEN SW.Cases_White
+WHEN &#39;Cases_Others&#39; THEN SW.Cases_Others
+WHEN &#39;Deaths_White&#39; THEN SW.Deaths_White
+WHEN &#39;Deaths_Others&#39; THEN SW.Deaths_Others
+ELSE NULL END
+as  Factors
+FROM
+Simpson_wide  as SW
+CROSS JOIN Catable
+
+&quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##         Category      Age Factors
+## 1    Cases_White      0-4   0.239
+## 2   Deaths_White      0-4   0.533
+## 3   Cases_Others      0-4   0.761
+## 4  Deaths_Others      0-4   0.467
+## 5    Cases_White    5--17   0.190
+## 6   Deaths_White    5--17   0.091
+## 7   Cases_Others    5--17   0.810
+## 8  Deaths_Others    5--17   0.909
+## 9    Cases_White    18-29   0.298
+## 10  Deaths_White    18-29   0.189
+## 11  Cases_Others    18-29   0.702
+## 12 Deaths_Others    18-29   0.811
+## 13   Cases_White    30-39   0.265
+## 14  Deaths_White    30-39   0.164
+## 15  Cases_Others    30-39   0.735
+## 16 Deaths_Others    30-39   0.836
+## 17   Cases_White    40-49   0.265
+## 18  Deaths_White    40-49   0.164
+## 19  Cases_Others    40-49   0.735
+## 20 Deaths_Others    40-49   0.836
+## 21   Cases_White    50-64   0.364
+## 22  Deaths_White    50-64   0.164
+## 23  Cases_Others    50-64   0.636
+## 24 Deaths_Others    50-64   0.836
+## 25   Cases_White    65-74   0.459
+## 26  Deaths_White    65-74   0.408
+## 27  Cases_Others    65-74   0.541
+## 28 Deaths_Others    65-74   0.592
+## 29   Cases_White    75-84   0.554
+## 30  Deaths_White    75-84   0.521
+## 31  Cases_Others    75-84   0.446
+## 32 Deaths_Others    75-84   0.479
+## 33   Cases_White      85+   0.696
+## 34  Deaths_White      85+   0.676
+## 35  Cases_Others      85+   0.304
+## 36 Deaths_Others      85+   0.324
+## 37   Cases_White ALL AGES   0.354
+## 38  Deaths_White ALL AGES   0.495
+## 39  Cases_Others ALL AGES   0.646
+## 40 Deaths_Others ALL AGES   0.505</code></pre>
+</div>
+<div id="pivotcolume-to-row" class="section level1">
+<h1>PIVOT:COLUME TO ROW</h1>
+<pre class="r"><code># show the table in the long format
+head(Simpson,10)</code></pre>
+<pre><code>##         Age Cases Deaths race
+## 1       0-4 0.239  0.533    w
+## 2     5--17 0.190  0.091    w
+## 3     18-29 0.298  0.189    w
+## 4     30-39 0.265  0.164    w
+## 5     40-49 0.265  0.164    w
+## 6     50-64 0.364  0.164    w
+## 7     65-74 0.459  0.408    w
+## 8     75-84 0.554  0.521    w
+## 9       85+ 0.696  0.676    w
+## 10 ALL AGES 0.354  0.495    w</code></pre>
+<pre class="r"><code>query = &quot;
+SELECT Age,
+       SUM(CASE WHEN race = &#39;w&#39; THEN  Deaths ELSE NULL END) AS whitedeath ,
+       SUM(CASE WHEN race = &#39;w&#39; THEN  Cases  ELSE NULL END) AS whitecase  ,
+       SUM(CASE WHEN race = &#39;o&#39; THEN  Deaths  ELSE NULL END) AS otherdeath,
+       SUM(CASE WHEN race = &#39;o&#39; THEN  Cases  ELSE NULL END) AS othercase
+FROM Simpson
+group by Age
+&quot;
+query %&gt;%  sqldf()</code></pre>
+<pre><code>##         Age whitedeath whitecase otherdeath othercase
+## 1       0-4      0.533     0.239      0.467     0.761
+## 2     18-29      0.189     0.298      0.811     0.702
+## 3     30-39      0.164     0.265      0.836     0.735
+## 4     40-49      0.164     0.265      0.836     0.735
+## 5     5--17      0.091     0.190      0.909     0.810
+## 6     50-64      0.164     0.364      0.836     0.636
+## 7     65-74      0.408     0.459      0.592     0.541
+## 8     75-84      0.521     0.554      0.479     0.446
+## 9       85+      0.676     0.696      0.324     0.304
+## 10 ALL AGES      0.495     0.354      0.505     0.646</code></pre>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

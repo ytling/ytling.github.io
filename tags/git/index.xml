@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on A Hugo website</title>
+    <link>/tags/git/</link>
+    <description>Recent content in git on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git help</title>
+      <link>/2021/04/23/githelp/</link>
+      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/04/23/githelp/</guid>
+      <description>git is used to save our codes in the cloud.- working directory
+staging area(index). connect the staging area with the repository.
+git repository
+git basicgit init will generate a file called /.git/ used ls -a to see save some basic utility.git add change the files from working directory to staging area.git commit put into the repository.
+git status: 1. Changes to be commited working directory has the same files as the index2.</description>
+    </item>
+    
+  </channel>
+</rss>

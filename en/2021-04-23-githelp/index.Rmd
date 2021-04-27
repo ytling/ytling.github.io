@@ -1,0 +1,27 @@
+---
+title: Githelp
+author: ''
+date: '2021-04-23'
+slug: githelp
+categories:
+  - learn
+tags:
+  - git
+---
+
+#  git help everyday
+
+
+```
+Changes not staged for commit:
+```
+
+when we `git add` the files exit in the repo but changes, we need to tell git which file needs to add. We can use  
+
+0. `git add <file>...` to include in what want to be committed 
+
+1. `git add -u :/`: add all modified file changes to the stage.
+
+2. `git add * :/`: add modified and any new files to the stage. 
+
+# 

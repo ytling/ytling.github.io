@@ -1,0 +1,301 @@
+---
+title: 'Blog Down'
+author: 'ling '
+date: '2021-03-21'
+slug: 'Blog'
+categories: ['learn']
+tags: []
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+---
+
+# get start: 
+
+here we go. already started 
+
+# hugo go: 
+
+a tool we we can leverage to generate the static website. The layout below follows my [master](www.bookdown.org/yihui/blogdown)
+
+## config
+`config.*`: in the format of . toml or yaml, the file speak globally.  it contents parameters inside the `[]`  and it populate the content inside as a variable in the site templates. 
+
+## Content
+Content here has two: physical content means the real folder called content containing all your posting blogs. another content means the content of the artial and also means the each file you create to contain the things. The second content is in the format: .md: also used in the github. .Rmd: used best in rstudio. .markdown: not really sure. 
+
+### Front matter 
+website is plainly a html file here render from the .md or .Rmd files use to rendered. Front matter is used for define your post in many parameters. Used Addins in Rstdui is good. And most confused is  `slug` and `title`. `title` : the title of the artical. `slug`: it is for the Permalinks. For this I mean, when open the website, you will see the http:\\slug to direct to your responding webpage. You can change the 
+
+```
+permalinks:
+  cn: /:year/:month/:day/:slug/
+  en: /:year/:month/:day/:slug/
+
+```
+
+into 
+
+```
+permalinks:
+  cn: /:year/:month/:day/:title/
+  en: /:year/:month/:day/:title/
+```
+
+to used the title in the front matter to produce the link for the website. However, I do not think it is a good idea as we not always want a long link if a title is long. 
+
+
+## Templates
+Hugo theme <--- templates + web asset. 
+list templates and single templates are mostly common.
+_defaults/ has the following two files:
+### _default/single.html: 
+a page uses to write single thing. 
+
+```
+# {{}}: use the hugo variables and functions
+{{ patial "header.html"}}
+<div class = 'xxxx'>
+
+.........
+
+<\div>
+
+<main>
+{{ .Content }}  # ---> wrapped in the HTML tag <main>
+</main>
+
+{{ partial 'footer.html' . }}
+```
+
+the class named xxx used to describe in the .css file under the statics. 
+
+### _default/list.html:
+
+a single list.html will generate multiple lists of pages according to the sections and taxonomy(catergories and tags) on the website. The list items are representes in the HTML tags `<li>`
+and `<ul>`. 
+
+```
+{{ partial "header.html" . }}
+
+{{if not .IsHome }} # ---> if it is not homepages
+<h1>{{ .Title }}</h1>
+{{ end }}
+
+{{ .Content }}
+
+<ul>
+  {{ range (where .Data.Pages "Section" "!=" "") }}
+  <li>
+    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+    <a href="{{ .URL }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>
+
+{{ partial "footer.html" . }}
+
+```
+
+the function `{ range }` should not empty, and __Section__ in hugo means the first-level of subdir in the content/ , for exmaple content/en/xxx, it is en. 
+it will not contents the paged under the content. 
+such as we say the https://*/en contains posts in the en only. 
+```
+<ul>
+  <li>
+  
+  <\li>
+<\ul>
+```
+
+### terms.html 
+
+home page of tags/taxonomy terms. `.Data.Terms` stores all terms under a taxonomy(a catergry name). For example, you have many blogs with category blog, then hugo will automatic detect and collect them. The term is passes to hugo function `relURL` via  pip `|` to make it relative, relative links are independ of the domain name. 
+
+### Partials/ 
+
+this is a dir collects pieces of the html used frequently. 
+
+```
+{{ partial "header.html" . }}
+
+<h1>{{ .Title }}</h1>
+
+<ul class="terms">
+  {{ range $key, $value := .Data.Terms }}
+  <li>
+    <a href='{{ (print "/" $.Data.Plural "/" $key) | relURL }}'>
+      {{ $key }}
+    </a>
+    ({{ len $value }})
+  </li>
+  {{ end }}
+</ul>
+
+{{ partial "footer.html" . }}
+```
+
+### .\partials stores the templates reused in other html pages by the `{{ partial }}` function. 
+
+
+
+```
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link href='{{ "/css/style.css" | relURL }}'
+      rel="stylesheet" />
+    <link href='{{ "/css/fonts.css" | relURL }}'
+      rel="stylesheet" />
+    {{ partial "head_custom.html" . }}
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+    <hr/>
+    </nav>
+    
+```
+
+`.Site.Menus.main` can used in the `config.toml`
+```
+[[menu.main]]
+    name = 'Home'
+    url = "/"
+    
+[[menu.main]]
+    name = 'About'
+    url = "/about/"
+
+```
+
+it will be
+
+```
+<ul class="menu">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/">About</a></li>
+</ul>
+```
+
+### footer.html
+
+```
+  <footer>
+  {{ partial "foot_custom.html" . }}
+  {{ with .Site.Params.footer }}
+  <hr/>
+  {{ . | markdownify }}
+  {{ end }}
+  </footer>
+  </body>
+</html>
+
+```
+
+`.Site.Params.footer` to generate a page footer. `with {{.}}{{end}} `is shorthand for the `{{if.Site.Params.footer}}{{.Site.Params.footer}}{{end}}` this saves you from typing the variable 
+twice by using the `{{.}}` as a placeholder for the variable as a site parameter in the `config.xxx` . The additional function `markdownify` convert the markdown to HTML. this sequence ensure that we can add a `footer` parameter in the `config.xxx`
+
+```
+[params]
+    footer = "&copy; [Yihui Xie](https://yihui.org) 2017"
+```
+
+
+## Custom layouts 
+
+
+```
+your-website/
+├── config.toml
+├── ...
+├── themes/
+│   └── hugo-xmin/
+│       ├── ...
+│       └── layouts/
+│           ├── ...
+│           └── partials
+│               ├── foot_custom.html
+│               ├── footer.html
+│               ├── head_custom.html
+│               └── header.html
+└── layouts
+    └── partials
+        ├── foot_custom.html
+        └── head_custom.html
+        
+```
+
+According to yihui, be careful to change the code under theme instead you can modified the both `foot_custom.html` and 
+`head_custom.html` under the `root\layout\partials`. 
+
+
+
+
+## Static files 
+
+all files under the static/ are copied to the public/. This is used to save web asset like images, video, CSS and javascript. They can be override. For example, an image `static/subdir/xxx.png` can linked to ![](subdir/xxx.png). It depends on the `baseurl` in `confi.xxx`, 
+```
+baseurl = "http://example.com/subdir/"
+
+# this link to the /subdir/xxx.png
+```
+
+Attention Please: do not put `statics/about/index.Rmd` because it will overwrite the `content/about.md` as the file under `static/` will be copied to `public/`.  
+
+
+
+# Lastly 
+Since I open a blog with the hugo plus git. I spent a lot time researching a simple and easy way to publish a blog. Then I used to the follow steps.  
+Assumption:  
+experienced R/R studio, git commit, [a exiting blog](https://bookdown.org/yihui/blogdown/a-quick-example.html), knowledge in HTML and CSS.  A image w
+
+Procedure:  
+1. in R studio, use the _Addins_ --> _New Post_ --> fill in the information(I choose the .Rmd always)  
+2. in write the information with the simple [markdown syntax](http://rmarkdown.rstudio.com/)  
+3. _Knit_ the file and test the view in the _Viewer_  
+4. good, go to the project dictionary and cmd  
+
+
+```
+hugo -D 
+# this is used to push the updated files in ./content/post to ./public
+```
+
+5.re-direct to the `.\public` and use git commit.  
+
+```
+cd public 
+git add .
+git commit -m 'XXXX'
+git push 
+```  
+6.your new poster is good to go
+
+---
+
+# Addin ....
+
+* website is generated from the HTML file, so the correct format of the html is important. 
+the `knit` used with the blogdown library is different from the simple `knit` in a regular file. My solution is kind werid. I create a Rmd file named different from index.Rmd, copy the file into the new Rmd file and knit with a new html output. Then I rename the original index.Rmd and index.html into XXX_origin and changed the new created Rmd and html into index.XXX. Lastly, I serve_site() to see if it has been changed. 
+
+* `build_site(local = TRUE)`: recompiled the Rmd file. some xxx.Rmd file is not recompiled when xxx.html has relative lastest modified time.However,
+  - delete the xxx.html and run the `knite` again. 
+  - click the Addins, 'Touch file'
+  
+*  If you have time-consuming code chunks in any Rmd files, you have to use either of these methods to save time:
+  - Turn on knitr’s caching for time-consuming code chunks, i.e., the chunk option cache = TRUE.
+  - Do not call `build_site()`,
+ but `blogdown::hugo_build()` instead. The latter does not compile any Rmd files, but simply runs the hugo command to build the site. *Please use this method only if you are sure that your Rmd files do not need to be recompiled*
+
+*  Draft and future posts are always rendered when local = TRUE, but not when local = FALSE. 
+This is for you to preview draft and future posts locally. If you know the Hugo command line, it means the hugo command is called with the flags -D -F, or equivalently, `--buildDrafts` or `--buildFuture` [ref] (https://bookdown.org/yihui/blogdown/local-preview.html)
+

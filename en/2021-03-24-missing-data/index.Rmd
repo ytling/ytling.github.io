@@ -1,0 +1,78 @@
+---
+title: Missing Data
+author: 'ling '
+date: '2021-03-24'
+slug: missing-data
+categories: []
+tags: []
+---
+
+
+
+# Missing data 
+
+## What types of missing data?
+- Missing completely at random
+- Missing at random 
+- Missing not at random
+
+## What technique to handle missing data?
+
+    
+1. Listwise or case deletion： 
+   - assumption：sample size are large  
+   - con: simple implement 
+   - pro: loss given information
+
+
+2. Pairwise deletion?
+    - assumption： not missing here and there, 
+    - con：compare with the listwise, the lost information reduced 
+    - pro：cause inaccurate stand error as the knowing 
+
+
+3. Mean substitutionn?
+    - assumption: 
+    - con： increase the sample size 
+    - pro: underestimate the errors
+
+4. Regression imputation
+    - assumption: the value of other data are not missing
+    - con: increase the sample size, reduce the stand error
+    - pro: add extra effort into finding the fitted regression model
+
+
+
+5. Last observation carried forward 
+    - assumption:  the  outcome remains unchanged by the missing data
+    - con: easy communicate , typically used method on *longitudinal* data
+    - pro: need meet the assumption
+
+6. Maximum likelihood
+    - assumption: known distribution, etc. multivariate normal distribution
+    - con: understandarble, reasonable 
+    - pro: increaing difficulty in computing 
+      
+
+7. Expectation-Maximization
+    - assumption: suitable number of missing data
+    - con: increase the level of precision, it tends to play with number.
+    - pro: take a long time to converge, not good for too many missing data
+      Multiple imputation
+
+
+8. Multiple imputation
+    - assumption: depends on the packages/library
+    - con: robosted, not limited to single distribution
+    - pro: take efforts to understand and utilized the methods with the exiting package
+
+
+In conclusion,  no matter what is the methods we used to implement the missing data, Sensitivity analysis is required by National Research Council to be conducted to evaluate the robustness of the results. Sensitivity analysis is to measure the uncentainty of the output from a strategy we choose for the missing data. This is also called simulation analysis in some researches.  
+
+---
+reference:
+Hyun Kang. The prevention and handling of the missing data. [link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3668100/)
+
+
+
+

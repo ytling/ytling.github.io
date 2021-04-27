@@ -1,0 +1,472 @@
+---
+title: SQL
+author: ''
+date: '2021-03-18'
+slug: sql
+categories: []
+tags: []
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval =TRUE)
+library(knitr)
+library(dbplyr)
+library(sqldf)
+library(tidyverse)
+```
+
+```{r, echo = FALSE}
+# Get the files names
+temp = list.files(pattern="*.csv")
+# First apply read.csv, then rbind
+for (i in 1:length(temp)) {
+  tab_name <- temp[i] %>%  str_split("\\.csv") %>% unlist() %>% str_split('\\" " ')
+  assign( temp[i] %>% str_replace('\\.csv',''), read.csv(temp[i]))
+}
+Summer_Medals <- read.csv("summer.csv", row.names=NULL)
+```
+
+Some information contains from [Datacamp], you can use my refer link(<https://www.datacamp.com/join-me/MjY2NTU1>) to get started and learn new technique together.
+
+A recommended website: [data.world](<https://docs.data.world/documentation/sql/concepts/advanced/value_blocks.htm>
+
+# DEFINATION OF RELATION TABLES
+
+-   entity: (table) the object store the information
+
+-   attribute: column in a table to describe the part of the information
+
+    -   composition attribute\
+    -   multiple value of the attribute\
+    -   derived attribute\
+
+-   primary key: a unique identity
+
+-   relationship `[]-<>=[]`
+
+    -   `-`partial participant: not all in the relationship `<>`
+    -   `=`total participant: all in the relationship
+
+-   weak entity: an entity that can not exit alone with its key
+
+-   identifying relationship: example database design: Movie in\
+    A=1=<verb>=n=B: a A must \<\> any number of B, an B must \<\> 1 A. A=1=<verb>-1-B: a A must \<\> 1 B and not all B \<\> 1 A A-1-<verb>=1=B: a A can \<\> any number of B, a B must be \<\> 1 A A=M=<verb>-N-B: all A must \<\> with Bs, not all Bs must / B can work with As
+
+**NOTE**: for the relationship, we can spite into two steps: 1. define the relationship(participation). 2. define the number (N,M) relationship.
+
+# HOW TO CHANGE THE ENTITY TO A SCHEMAS
+
+1.  Create a entry and the attributes with the entities.\
+
+-   the type, the key, combinition attribute: save separetly
+
+2.  handle the weak entity
+
+-   for a single weak entity, create a table to contains its primary key and all the primary from its owner. for example: a gift card entity depends on the store, so we will create a table GIFT_CARD_FOR(gift_card_type, *card_id*, *store_id*)
+
+3.  map the binary relationship 1:1 save the primary key in the 1 side as a foreign key in the other favor total participant
+
+4.  map the binary 1:N relationship: save the primary key in the 1 side as a foreign key to the N side relation or table
+
+5.  map a binary M:N relation type: create a relation table with its primary key as a combination key from the side of the two tables and a relation attributes.
+
+for the example below: we have the following entity: movie, director(weak), reviewer(weak), genref (weak) relation table: movie_direction, movie_cast, movie_genref, rating(between reviewer and movie)
+
+![](images/movie-database.png)
+
+# CASE WHEN
+
+-   case when in the **SELECT**: category and rename a column As a movie lover, I love to choose movie around 100 minutes and 'ok' with movie less than 200, however never able to finish a movie more than 200 minutes. Please write a sql to see: how many in each and named it as my_choose.
+
+```{r}
+sqldf(
+  "
+  select 
+    case when mov_time < 100 then 'love'
+         when mov_time between 100 and 200 then 'ok'
+    else 'others' end as my_choose,
+     count(mov_id)
+   from movie
+   group by my_choose
+   limit 5
+  "
+)
+```
+
+```{r}
+query =  "
+  select 
+    *
+   from movie
+   where mov_lang = 
+   case when mov_time < 100 then mov_lang
+         when mov_rel_country = 'UK' then mov_lang
+    else NULL
+    end
+limit 5"
+
+sqldf(query)
+```
+
+in other way to express the same query
+
+```{r}
+query =
+  "select *
+   from movie
+   where mov_rel_country = 'UK'
+   or mov_time < 100"
+
+query %>%  sqldf()
+```
+
+for this time, I would like to learn English by watching the English movie, thus I want to choose the movie with English language and the duration less than 100 minutes also want to see the rating , sorted to choose the best one to watch
+
+```{r}
+sqldf(
+  "
+  select
+    case when mov_time < 100 then 'love'
+         when mov_time between 100 and 200 then 'ok'
+    else 'others' end as my_choose,
+   rev_stars
+   from movie
+   natural join rating
+   where mov_lang like '%English%'
+   order by rev_stars
+   limit 5
+
+  "
+)
+```
+
+-   case when used in **WHERE**: use as a filter, you can not use alias here, not very open.
+
+```{r}
+sqldf(
+  "
+  select
+   *
+   from movie
+   where
+   case when 
+   mov_time < 100 then 'less' 
+   when mov_time between 100 and 200
+   then 'more' end = 'less'"
+)
+```
+
+-   count with case when to calculate number
+
+```{r}
+sqldf("
+select count(case when act_gender like '%M%' then mov_id end) as  male_actor,
+       count(case when act_gender like '%F%' then mov_id end) as female_actor,
+       gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title
+limit 5")
+
+```
+
+or
+
+```{r}
+sqldf("
+select sum(case when act_gender like '%M%'  then 1 else 0  end) as  male_actor,
+       sum(case when act_gender like '%F%' then 1 else 0 end ) as female_actor,
+    gen_title
+from actor
+natural join movie_cast
+natural join movie
+natural join movie_genres
+natural join genres
+group by gen_title
+limit 5")
+
+```
+
+In R or Python, you have the ability to calculate a SUM of logical values (i.e., TRUE/FALSE) directly. In SQL, you have to convert these values into 1 and 0 before calculating a sum. This can be done using a CASE statement.
+
+-   Calculating percent with CASE and AVG
+
+```{r}
+# AVG(CASE WHEN condition_is_met THEN 1
+#          WHEN condition_is_not_met THEN 0 END)
+```
+
+# SUBQUERY
+
+The definition of the subquery:\
+\* a query nested inside another query\
+\* it can be used in : SELECT, FROM , WHERE clause\
+\* subquery in WHERE as a filter\
++ EXISTS/NOT EXITS: `WHERE EXITS ()`\
++ IN/ NOT IN: `WHERE col IN ()`\
++ ALL,ANY,SOME: `AND col >= ALL()`\
++ scaler Subquery, the result from the query is a single value\
+\* subquery in FROM as a new table, we recommend to use the CTE in section3
+
+uncorrelated scaler subquery in WHERE clause
+
+```{r}
+sqldf("select mov_title, mov_lang,avg(mov_time) as avg_mov
+from movie
+where mov_time >(select avg(mov_time)
+                   from movie)
+group by mov_lang")
+```
+
+CORRELATED/NESTED subquery the correlated subquery is a query use value from the outer query to generate a result\
+1. It can not execute separate from the main query\
+2. it run from main query to the inner query iteratively. Subquery usually run from inner to main query 3. it cause the time.\
+select all the mov with their mov_time more than its average move time with from the same release county
+
+```{r}
+query1 = "
+select mov_title, mov_time
+from movie as outer
+where outer.mov_time > (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 "
+query1 %>% sqldf()
+
+```
+
+```{r}
+query2 = "
+select mov_title, mov_time, avg(mov_time)
+from movie as outer
+where outer.mov_time > (select avg(inner.mov_time)
+                 from movie as inner
+                 where inner.mov_lang = outer.mov_lang)
+                 "
+query %>%  sqldf()
+
+```
+
+# COMMON TABLE EXPRESS (cte)
+
+we only want the first and last name of the actor table and substact it as a new table named people. it can narrow down the necessay of the information from the table and used it for many times according to the following neeeded.
+
+```{r}
+query = "with people (first, last)
+as (
+select act_fname, act_lname
+from actor
+)
+select first
+from people"
+
+query %>%  sqldf
+```
+
+# WINDOW FUN
+
+-   Slide
+
+OVER() cause allow an aggregate function to a dataset and similar to the subquery and run faster than the subqueries.
+
+Numbering Olympic games in descending order
+
+```{r}
+sqldf("
+SELECT
+  Year,
+  -- Assign the lowest numbers to the most recent years
+  ROW_NUMBER() OVER (order by year desc) AS Row_N
+FROM (
+  SELECT DISTINCT Year
+  FROM Summer_Medals
+) AS Years
+ORDER BY Year
+limit 5")
+
+```
+
+```{r}
+sqldf("SELECT mov_year,
+      sum(mov_time)over( order by mov_year Rows between 1 preceding and current row) as newcolumn
+      FROM movie
+      Limit 3")
+```
+
+-   lag: pick the value of the value in the second position LAG(column, n),LEAD(column, n), FIRST_VALUE(column),LAST_VALUE(Column). find the resigned or return champion's countries
+
+```{r}
+sqldf("
+   WITH Weightlifting_Gold AS (
+   SELECT
+    -- Return each year's champions' countries
+    Year,
+    Country AS champion
+  FROM Summer_Medals
+  WHERE
+    Discipline = 'Weightlifting' AND
+    Event = '69KG' AND
+    Gender = 'Men' AND
+    Medal = 'Gold')
+SELECT
+  Year, Champion,
+  lag(Champion) OVER
+   (order by year ASC) AS Last_Champion
+FROM Weightlifting_Gold
+ORDER BY Year ASC")
+```
+
+-   paging NTILE(): it is spite the data into pages. For example, if the total number of rows is 50, and there are five groups, each bucket will contain 10 rows.
+
+```{r}
+sqldf("
+   WITH Weightlifting_Gold AS (
+   SELECT
+    -- Return each year's champions' countries
+    Year,
+    Country AS champion
+  FROM Summer_Medals
+  WHERE
+    Discipline = 'Weightlifting' AND
+    Event = '69KG' AND
+    Gender = 'Men' AND
+    Medal = 'Gold')
+SELECT
+  Year, Champion,
+  NTILE(2) OVER
+   (order by year ASC) AS quantile
+FROM Weightlifting_Gold
+ORDER BY Year ASC")
+```
+
+-   FRAMES a frame to your window function allows you to calculate "moving" metrics, inputs of which slide from row to row. like ROW BETWEEN *start* and *finish*
+
+    -   current row:
+    -   n preceding: n rows before the current row
+    -   n following: n rows after the current row
+
+**RANGE BETWEEN** treat the duplicates as a the same order.
+
+Crosstab: Compute a simple cross-tabulation of two (or more) factors. By default computes a frequency table of the factors unless an array of values and an aggregation function are passed.\
+the postSQL can use the extending function to do the table. the format is long format we need to transfer to wide format. in postSQL we use the: crosstab.
+
+```{r}
+query = "SELECT
+         time, subject, val,
+         SUM(val) OVER (PARTITION BY subject ORDER BY time
+                        ROWS UNBOUNDED PRECEDING)
+           AS running_total,
+         AVG(val) OVER (PARTITION BY subject ORDER BY time
+                        ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
+           AS running_average
+       FROM observations"
+```
+
+Pivot Table: Create a spreadsheet-style pivot table as a DataFrame. The levels in the pivot table will be stored in MultiIndex objects, Hierarchical indexes on the index and columns of the result DataFrame.
+
+```{r}
+# Connect to the default postgres database
+
+pq = "CREATE TABLE t (Section CHAR(1), Status VARCHAR(10), Count integer);
+
+INSERT INTO t VALUES ('A', 'Active',   1);
+INSERT INTO t VALUES ('A', 'Inactive', 2);
+INSERT INTO t VALUES ('B', 'Active',   4);
+INSERT INTO t VALUES ('B', 'Inactive', 5);
+
+SELECT row_name AS Section,
+       category_1::integer AS Active,
+       category_2::integer AS Inactive
+FROM crosstab('select section::text, status, count::text from t',2)
+            AS ct (row_name text, category_1 text, category_2 text)"
+
+```
+
+# ROLLUP and CUBE
+
+ROLLUP and CUBE are used in GROUP BY clause
+
+`GROUP BY ROLLUP(group1, group2)`: group2 is hierarchy within the group1
+
+`GROUP BY CUBE(group1,group2)`: there is no clear relation between the two groups
+
+# TABLESAMPLE
+
+`SELECT * FROM table TABLESAMPLE(5)`: random get the 5 percentage within the table.
+
+# UNPIVOT:ROW TO COLUMN
+
+-   create a table that lists all of the columns from the original table as a row in a new table
+-   cross join it with the wide table to create an expanded view
+-   pulls data from the correct column
+
+```{r}
+query =
+  "SELECT *
+FROM Simpson_wide
+Limit 5
+"
+query %>%  sqldf()
+```
+
+```{r}
+Catable = data.frame( 'Category' = colnames(Simpson_wide)[2:5])
+query = "
+SELECT
+*
+FROM
+Simpson_wide
+CROSS JOIN Catable
+
+"
+query %>%  sqldf()
+```
+
+```{r}
+Catable = data.frame( 'Category' = colnames(Simpson_wide)[2:5])
+query = "
+
+SELECT   Catable.*,
+SW.Age,
+CASE  Catable.Category
+WHEN 'Cases_White' THEN SW.Cases_White
+WHEN 'Cases_Others' THEN SW.Cases_Others
+WHEN 'Deaths_White' THEN SW.Deaths_White
+WHEN 'Deaths_Others' THEN SW.Deaths_Others
+ELSE NULL END
+as  Factors
+FROM
+Simpson_wide  as SW
+CROSS JOIN Catable
+
+"
+query %>%  sqldf()
+```
+
+# PIVOT:COLUME TO ROW
+
+```{r}
+# show the table in the long format
+head(Simpson,10)
+```
+
+```{r}
+query = "
+SELECT Age,
+       SUM(CASE WHEN race = 'w' THEN  Deaths ELSE NULL END) AS whitedeath ,
+       SUM(CASE WHEN race = 'w' THEN  Cases  ELSE NULL END) AS whitecase  ,
+       SUM(CASE WHEN race = 'o' THEN  Deaths  ELSE NULL END) AS otherdeath,
+       SUM(CASE WHEN race = 'o' THEN  Cases  ELSE NULL END) AS othercase
+FROM Simpson
+group by Age
+"
+query %>%  sqldf()
+
+```

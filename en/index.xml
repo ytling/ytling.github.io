@@ -32,26 +32,6 @@ I graduated from the Bio-statistics master program in the year 2019 and started 
     </item>
     
     <item>
-      <title>Untitle</title>
-      <link>/2021/04/11/untitle/</link>
-      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/04/11/untitle/</guid>
-      <description>Decision TreeHackerRankvue meetingcontigency tableleedcodereport of from the \(X_t\),\(y_t\) are good performance. But has high false positive rate in the testing data. Why?random forest are able to reduce the variancea plot x (epoch), y(loss) group by the different learning rate: 01, and 1e-10. the first group decrease and increasing at one point, the second decrease steeply and converge at a certain point.</description>
-    </item>
-    
-    <item>
-      <title>Leedcode</title>
-      <link>/2021/04/07/leedcode/</link>
-      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/04/07/leedcode/</guid>
-      <description>Leedcode 67: Add BinaryGiven two string a and b, return their sum as a binary string.
-Input: a = &amp;#39;101&amp;#39;, b = &amp;#39;111&amp;#39;Output: &amp;#39;1100&amp;#39;Idea:1. ans can use list and string as the result in a string.if use the string: +if use the list need to add the &#34;&#34;.join()[::-1] at the end
-while loop instead the for loop: the length is unsure, both use the index</description>
-    </item>
-    
-    <item>
       <title>Experimental Design </title>
       <link>/2021/03/26/experimental-design/</link>
       <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>

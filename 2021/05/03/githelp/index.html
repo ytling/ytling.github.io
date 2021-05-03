@@ -126,6 +126,14 @@ The answer is the HEAD file.</p>
 <code>git checkout</code>: change the current active branch.</p>
 </div>
 </div>
+<div id="stash" class="section level1">
+<h1>stash</h1>
+<p><a href="https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning">git</a>
+do not want to commit my changes in index, want to pull first, to test the changes others commit to see if it any conflicts
+so use the stash to a place,<code>git stash</code>. After pulling any version in the main remote repository, then put the staging files back changes to be committed,<code>git stash apply</code>. if there is any conflict:
+1. <code>git restore --staged &lt;file&gt;</code>choose to restore the change back to working dictionary.
+2. <code>git add/rm &lt;files&gt;</code> choose to solve the conflict</p>
+</div>
 
     </div>
   </article>

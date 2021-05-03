@@ -6,57 +6,36 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Git help</title>
-      <link>/2021/04/23/githelp/</link>
-      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/04/23/githelp/</guid>
-      <description>git is used to save our codes in the cloud.- working directory
-staging area(index). connect the staging area with the repository.
-git repository
-git basicgit init will generate a file called /.git/ used ls -a to see save some basic utility.git add change the files from working directory to staging area.git commit put into the repository.
-git status: 1. Changes to be commited working directory has the same files as the index2.</description>
-    </item>
-    
-    <item>
-      <title>绝对永远和相对永远</title>
-      <link>/2021/04/23/%E7%BB%9D%E5%AF%B9%E6%B0%B8%E8%BF%9C%E5%92%8C%E7%9B%B8%E5%AF%B9%E6%B0%B8%E8%BF%9C/</link>
-      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/04/23/%E7%BB%9D%E5%AF%B9%E6%B0%B8%E8%BF%9C%E5%92%8C%E7%9B%B8%E5%AF%B9%E6%B0%B8%E8%BF%9C/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cv&#43;resume</title>
       <link>/2021/04/22/resume/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/04/22/resume/</guid>
-      <description>To who may read
-I am writing to express my keen interest in the Research Analysis I in SickKids hospital, CIHR SUBINT Tam to Hahn.
-I graduated from biostatistics program in University of Toronto in year 2018. I respect the impact of gene and environment and try single healthy experiment on myself to understand some hard theories. After graduation, I worked in the industry for 1+ year and decided to change my focus on researching the methodology health related.</description>
+      <description>Site: The Bishop Strachan SchoolPosition: Data Analyst
+Dear Manager
+I am writing to express my keen interest in Data Analyst position in the Bishop Strachan School.
+I graduated from the Bio-statistics master program in the year 2019 and started to work in TD bank as Data Support Analysis. My passion and motivation came from assisting shareholder make decision from data-driven outcomes and tutoring in subject: elementary programming, math, elementary statitiscs.</description>
     </item>
     
     <item>
       <title>皮肤管理</title>
-      <link>/2021/04/21/%E7%9A%AE%E8%82%A4%E7%AE%A1%E7%90%86/</link>
+      <link>/2021/04/21/%E6%8A%A4%E8%82%A4/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/04/21/%E7%9A%AE%E8%82%A4%E7%AE%A1%E7%90%86/</guid>
+      <guid>/2021/04/21/%E6%8A%A4%E8%82%A4/</guid>
       <description>年纪大了皮肤不如以前抗氧能力强了,学习护肤.
 步骤   早上：每天
- 洁面（如果感觉太干可以省略） 微微湿润的时候，眼部，两滴 The inky list 的 Hyaluronic acid— Ascorbic acid+Alpha arbutin — Caffine+ EGCG - 两滴在面霜里面，面霜和防晒 涂抹。    晚上： 每天
-  洁面,
-  脸微微湿润的时候，[The inky list]的 Hyaluronic acid Retional (每周3次，然后增加)
-: 1到2次/week
-  在 1-2 步骤后加凡士林
-    NOTE
+ 洁面（如果感觉太干可以省略） 微微湿润的时候，眼部，两滴玻尿酸在面霜里面 涂抹防晒    晚上： 每天
+ 洁面 脸微微湿润的时候，视黄醇 1-3 次每周在面霜 加上凡士林， 每周1-2 次    NOTE
 洗脸20 s to 1 min, 指尖按摩确保干净, 水温 36-40 °
-Lactic acid +HA 有两种,一个是5%一个是10%, 可以自己选择
-产品选择:  洗面奶 和面霜  Cerave: shoppers and rexell   玻尿酸  the inky list: sephora    </description>
+Lactic acid 乳酸+玻尿酸 有两种,一个是5%一个是10%, 可以自己选择
+产品选择:   洗面奶
+ Cerave    面霜
+ Elizabeth Arden    玻尿酸(hyaluronic acid)
+ the inky list    水杨酸（Salicylic Acid): 只要是收缩毛孔，和一些斑纹吗，建议晚上使用，但是不要和Retinol（视黄醇）
+ Bobbi Brown: + 蔷薇果 (Rose hip)，摩洛哥坚果油，    防晒霜（sun cream)</description>
     </item>
     
     <item>

@@ -13,11 +13,10 @@
       <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/04/23/githelp/</guid>
-      <description>git is used to save our codes in the cloud.- working directory
-staging area(index). connect the staging area with the repository.
-git repository
-git basicgit init will generate a file called /.git/ used ls -a to see save some basic utility.git add change the files from working directory to staging area.git commit put into the repository.
-git status: 1. Changes to be commited working directory has the same files as the index2.</description>
+      <description>Git is a free and open source distributed version control system.
+working directory
+staging area(index). connect the staging area with the repository.git repositorythree different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.</description>
     </item>
     
   </channel>

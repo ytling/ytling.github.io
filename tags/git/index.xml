@@ -6,17 +6,17 @@
     <description>Recent content in git on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git help</title>
-      <link>/2021/04/23/githelp/</link>
-      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+      <link>/2021/05/03/githelp/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/04/23/githelp/</guid>
+      <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
-working directory
-staging area(index). connect the staging area with the repository.git repositorythree different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.</description>
+working directory.
+staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
   </channel>

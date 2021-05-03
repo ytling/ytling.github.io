@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Git help - A Hugo website</title>
+<meta property="og:title" content="Git help - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Catergory</a></li>
+    
+    <li><a href="/en/">English</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Git help</h1>
+
+    
+    <span class="article-date">2021-05-03</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/05/03/githelp/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Git is a free and open source distributed version control system.</p>
+<ol style="list-style-type: decimal">
+<li>working directory.<br />
+</li>
+<li>staging area(index).</li>
+<li>git repository.</li>
+</ol>
+<p>three different objects generate from git cmd and describe in Hash:</p>
+<ul>
+<li>blob: only save the content of the file instead the file name.</li>
+<li>tree: the file name.</li>
+<li>commit: the first commit also called root commit.</li>
+</ul>
+<div id="git-basic" class="section level1">
+<h1>git basic</h1>
+<p><code>git init</code>: generate a file called /.git/ used ls -a to see all the hided files.<br />
+<code>git add</code>: change the files from working directory to staging area.
+<code>git commit</code>: put into the repository.<br />
+<code>git config -l</code>: show our local config.<br />
+<code>cat ~/.gitconfig</code>: local is the son of the global father.</p>
+<p><code>git status</code>: Show the working tree status</p>
+<ol style="list-style-type: decimal">
+<li><em>Changes to be committed</em>: working directory has the same files as the index</li>
+<li><em>Untracked files</em>: in working dictionary but not in the index. we can use <code>git add.</code> to change to case1</li>
+<li><em>modified files</em>: the file with the same name but are different in the working and index</li>
+<li><em>nothing to commit</em> the new created folder does not make any commit change.</li>
+</ol>
+<p><code>git ls-files - s</code>: show information about files in the index or working tree</p>
+<p><code>tree .git/objects</code>: return the objects.</p>
+<p><code>git cat-files</code>: check the objects.</p>
+<p><code>git cat-files -t dir+xxx</code> :return type (6 head digits of the object)</p>
+<p><code>git cat-files -p dir+xxx</code> : return contents</p>
+<p><code>git log dir+xxx</code>: check the log file with input the head of the SHA1(log means the output from the operation system here means the SHA)</p>
+<div id="branch" class="section level2">
+<h2>branch</h2>
+<p><code>.git/refs</code>: contains objects (SHA-1) value. To check out, it will contain</p>
+<pre><code>.git/refs
+.git/refs/heads
+.git/refs/tags</code></pre>
+<p>WHY?
+it would be easier if you had a file in which you could store that SHA-1 value
+under a simple name so you could use that simple name rather than the raw SHA-1 value.
+these simple names are called “references” or “refs”;
+You can find the files that contain those SHA-1 values in the .git/refs directory.
+The question now is, when you run git branch <branch>, how does Git know the SHA-1 of the last commit?
+The answer is the HEAD file.</p>
+<p><code>git branch</code>: check the branch and also updated the reference contains the last commit to the new branch.
+<code>git checkout</code>: change the current active branch.</p>
+</div>
+</div>
+
+    </div>
+  </article>
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

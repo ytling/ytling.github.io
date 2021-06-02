@@ -29,5 +29,16 @@ working directory.
 hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
     </item>
     
+    <item>
+      <title>SQL</title>
+      <link>/2021/03/18/sql/</link>
+      <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/18/sql/</guid>
+      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
+DEFINATION OF RELATION TABLESentity: (table) the object store the information
+attribute: column in a table to describe the part of the information</description>
+    </item>
+    
   </channel>
 </rss>

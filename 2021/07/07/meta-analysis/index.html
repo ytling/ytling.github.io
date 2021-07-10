@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Meta Analysis - A Hugo website</title>
+<meta property="og:title" content="Meta Analysis - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Catergory</a></li>
+    
+    <li><a href="/en/">English</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Meta Analysis</h1>
+
+    
+    <span class="article-date">2021-07-07</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/07/07/meta-analysis/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>See Figure @ref(fig:Mantel Haenzel).</p>
+<div class="figure">
+<img src="/2021/07/07/meta-analysis/index_files/figure-html/Mantel%20Maenzel-1.png" alt="The cars data." width="672" />
+<p class="caption">
+(#fig:Mantel Maenzel)The cars data.
+</p>
+</div>
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3049418/">ref</a></p>
+<p>NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.</p>
+<p>Meta Analysis is a method used the data results from individual studies.
+Studies are coming from computerized Literature Search of a database such as PudMed etc.
+The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.
+Comparing with the computerized search, author also mentions the other two ways: hand search, cross check the reference and communicate with the researches in the relative areas.</p>
+<p>In terms of the statistical analysis, for dichotomous data, risk ratio and odds ratio are used as a measurement to test the treatment effect while standardized mean difference are used on the continuous data. Then, usually a fixed effect or random effect model needs to be choose. The main difference is that fixed effect model assumes the study population, subject selection criteria and treatments are all the same and <a href="https://www.statsdirect.com/help/meta_analysis/peto.htm">Mantel Haenzel method</a> and <a href="https://www.statsdirect.com/help/meta_analysis/mh.htm">the peto method</a> is used with the dichotomous data. When the statistical heterogeneity is presented after the meta analysis, the fixed effect is unsuitable and random effect models are used with an underlying assumption so it is usually more conservative with wider confidence interval than the fixed effect model.The most used random effect method is the <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/pooling-es.html#rem">DerSiminian and Laird method</a>.</p>
+<p>Heterogeneity, the sources of H are two: 1 called clinical diversity and 2 called method diversity. 1 indicated the participants, outcome study, and 2 is about study design and risk of bias. 1 is more easy adjusted than 2 because 2 some times suffer from the degree of bias which are from the purposed of the study.</p>
+<p>Variance among K trials are usually assessed using the Cohran’s Q statistics and a chi test of heterogeneity with k-1 degree of freedom. When the number of trial is small, the power is poor, thus the alpha is used 0.1 to test the hypothesis.</p>
+<p>The best quantitative measurement of variance is called inconsistency Index (<span class="math inline">\(I^2\)</span>) when it has value larger than 75%, it is considered a large heterogeneity. Some other methods are used to check the H, the 1. meta regression, y~n. 2. subgroup analysis. a variation on those groups described above , age and sex to compare the effect group. <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/forest.html">Forest plot</a> is used and will add an section to demonstrate the usage of the method.</p>
+<p>Biased in meta analysis can be sometime illustrated by a <a href="https://en.wikipedia.org/wiki/Funnel_plot">funnel plot</a>.</p>
+<p>The difference between 1 diag—nostic and 2 prog—nostic. 1 diagnose a specific disease. 2. the likelihood of developing the certain disease.</p>
+
+    </div>
+  </article>
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

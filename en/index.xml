@@ -6,7 +6,28 @@
     <description>Recent content in Ens on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meta Analysis</title>
+      <link>/2021/07/07/meta-analysis/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/07/07/meta-analysis/</guid>
+      <description>See Figure @ref(fig:Mantel Haenzel).
+(#fig:Mantel Maenzel)The cars data.ref
+NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.
+Meta Analysis is a method used the data results from individual studies.Studies are coming from computerized Literature Search of a database such as PudMed etc.The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
+    </item>
+    
+    <item>
+      <title>pan</title>
+      <link>/2021/06/11/xxxx/</link>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/11/xxxx/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Git help</title>
       <link>/2021/05/03/githelp/</link>

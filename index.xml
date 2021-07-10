@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Meta Analysis</title>
+      <link>/2021/07/09/meta-analysis/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/07/09/meta-analysis/</guid>
+      <description>ref
+NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.
+Meta Analysis is a method used the data results from individual studies.Studies are coming from computerized Literature Search of a database such as PudMed etc.The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
+    </item>
+    
+    <item>
       <title>最近反思</title>
       <link>/2021/07/09/%E5%8F%8D%E6%80%9D/</link>
       <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
@@ -17,18 +28,6 @@
 开始正题，昨天一场面试，感触颇深。其中最重要的其实是一个字，和现在社会趋势相反的关键字，就是‘慢’。先提供一些背景， 昨天做完一个来自一个咨询公司的面试，我回放了一下我的面试回答，焦虑到又犯了焦虑进食，主要是我发现我有很多在答非所问，我仔细回忆自己的回答，我听到了，提问者问题中的一两个关键词，我抓住我听的懂得地方就开始过度解释。其实这个是一个相对常见的问题，但是确实起不到让听者明白说话者的意思的作用，在中有几个原因1.我对自己的项目了解的不熟悉或者不够熟练。2. 我害怕自己表达的不够清楚，经常插入解释。 3. 我内心有一层，对别人想法的过度揣摩。 对于1， 解决的方法就是多练习，多熟悉，多总结，对于2 我个人觉得和1 相关的，2 和 3也是相关的，因为解释是对别人问题的揣测，对别人内心问题的预估，这个好在可以让听者更好理解，不好的点，会显示的多余冗杂并且影响自己的注意力和表述的顺序和逻辑。我没用想到很好的解决方案，我觉得下次可以试试把他写下来或者画图。三点问题分析表现是答非所问，回答的时候没有听懂问题就下口。但是深入刨析，太过急躁了，1准备不充分，答非所问，2. 语言的简练需要练习先过脑子的筛选，所以慢慢想一下再说。 3. 也就是可以用思考答案来取代揣测问题。 这个地方的慢，我叫它，慢说。
 下面一个是慢回，回复的快慢不代表，质量，我最近发现，很多人（包括我） 都用打字或者聊天的方式来疏解焦虑和压力。这个方式我觉得前者可取但是和后者结合起来确是一大罪过，焦虑来源于问题对未知的恐惧，那聊天没法解决问题，却可能带来更多的问题，问题有时候来源于别人的问题，还可能是情绪上的问题，类似于，为啥他不回我，之类加深焦虑，再加之，现在一旦打开社交媒体，充满的是各种未解决的问题，问题接种问题，就会团成球，聚焦成问题球， 焦虑用一种，习惯性迁移的方式给转移，但是等再次平静下来处理问题的时候，实际上很多的时间和精力已经浪费了。这个是对我的一个告诫，也是对于我相关问题的解决方法，问题慢慢回复，不急于回也是对别人的一个尊重。太多人，用分享自己的想法感受的方式来缓解压力了，这个压力间接转加到了同样有焦虑的你身上，变成了现在的一个新的焦虑球。
 最后想说的就是慢长， 这个中文很有意思，经常来形容时间路，慢长的时间，慢慢长路，这个告诉我们，时间还有很多，日子还很多，任何事都可以变的更好！</description>
-    </item>
-    
-    <item>
-      <title>Meta Analysis</title>
-      <link>/2021/07/07/meta-analysis/</link>
-      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/07/07/meta-analysis/</guid>
-      <description>See Figure @ref(fig:Mantel Haenzel).
-(#fig:Mantel Maenzel)The cars data.ref
-NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.
-Meta Analysis is a method used the data results from individual studies.Studies are coming from computerized Literature Search of a database such as PudMed etc.The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
     </item>
     
     <item>

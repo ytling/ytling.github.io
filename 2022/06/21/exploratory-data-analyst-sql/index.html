@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.101.0" />
+
+
+<title>Exploratory Data Analyst (SQL) - A Hugo website</title>
+<meta property="og:title" content="Exploratory Data Analyst (SQL) - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Catergory</a></li>
+    
+    <li><a href="/en/">English</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Exploratory Data Analyst (SQL)</h1>
+
+    
+    <span class="article-date">2022-06-21</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="exploratory-data-analyst-applies-to-the-following-cases" class="section level1">
+<h1>Exploratory Data Analyst applies to the following cases:</h1>
+<ol style="list-style-type: decimal">
+<li><p>vague targets or problems to the large data set</p></li>
+<li><p>large data set needs cleaning</p></li>
+</ol>
+</div>
+<div id="benefit-of-the-exploratory-data-analyst" class="section level1">
+<h1>Benefit of the exploratory data analyst:</h1>
+<ol style="list-style-type: decimal">
+<li><p>help find the inner pattern or relationship through the data</p></li>
+<li><p>help to categorize the variables for the further analysis. (missing, outlier etc.)</p></li>
+</ol>
+</div>
+<div id="three-type-of-data" class="section level1">
+<h1>Three type of data</h1>
+<div id="numeric-data" class="section level2">
+<h2>Numeric data</h2>
+<p>We would like to know the min and max, average, variance and correlation and percentile to this type of data.<br />
+Need to pay attention to learn how to truncate and round numeric values if necessary.<br />
+create temporary tables to save the interested variable in order to run the correlation matrix.</p>
+<pre class="r"><code>select min(), max(), stddev(), avg()
+
+from table 
+
+# median is different from other statistics as it need to be sorted by self or other linked variable 
+percentile_disc(0.5) 
+WITHIN GROUP (ORDER BY column_name)</code></pre>
+<pre class="r"><code>SELECT TRUNCATE(123.4567, 3);   # 123.456
+SELECT TRUNCATE(123.4567, 2);   # 123.45
+SELECT TRUNCATE(123.4567, 1);   # 123.4
+SELECT TRUNCATE(123.4567, 0);   # 123
+SELECT TRUNCATE(123.4567, -1);  # 120
+SELECT TRUNCATE(123.4567, -2);  # 100
+SELECT TRUNCATE(123.4567, -3);  # 0</code></pre>
+</div>
+<div id="catergorical-data-or-unstructure-data" class="section level2">
+<h2>Catergorical data or unstructure data</h2>
+<p>un-structure data is useful if we structure it into an appropriate way.<br />
+Need to deal with case, spacing and delimiters (special characterics)
+create a temporary table to count and aggregate any interested variable.</p>
+<pre class="r"><code>select catergoryvariable, count(*)
+from table 
+group by </code></pre>
+<p>case sensitive or case insensitive</p>
+<pre class="r"><code>where variable ilike/like &#39;%xxx%&#39;
+
+where lower(variable) = &quot;xxx&quot; 
+
+where trim(&quot; xx &quot;) = &quot;xx&quot;
+where rtrim(&quot; xx &quot;) = &quot; xx&quot;</code></pre>
+<p>split and concat text</p>
+<pre class="r"><code>select split_part(&quot; a,b,c&quot;, &quot;,&quot;, 2) = b
+
+
+select concat(&quot;a&quot;, 2, &quot;cc&quot;) = a2cc</code></pre>
+<p>create other class by using the <code>case when</code></p>
+</div>
+<div id="date-and-timestamps-data" class="section level2">
+<h2>Date and timestamps data</h2>
+<p>date/time data is not independent, it can be used in different way by modified it into a derived variable.
+we need to see it by units( seconds, minutes, hour, day, week, month, year), (UTC/global time stamps or the local time stamps)
+turn into a time series or find the gap would be help in further analysis.</p>
+<p>two time stamp format</p>
+<ol style="list-style-type: decimal">
+<li>iso: international organization for standards: <code>YYYY-MM-DD HH:MM:SS</code></li>
+<li>UTC: Coordinated Universal Time <code>YYYY-MM-DD HH:MM:SS+HH</code></li>
+</ol>
+<pre class="r"><code>Select date_part(&quot;month&quot;, date)
+
+select date_trunc(&quot;month&quot;, date)</code></pre>
+</div>
+</div>
+
+    </div>
+  </article>
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

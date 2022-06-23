@@ -15,8 +15,8 @@
       <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
 working directory.
-staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
+staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
   </channel>

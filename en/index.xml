@@ -14,10 +14,10 @@
       
       <guid>/2022/06/21/exploratory-data-analyst-sql/</guid>
       <description>Exploratory Data Analyst applies to the following cases:vague targets or problems to the large data set
-large data set needs cleaning
-Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
-help to categorize the variables for the further analysis. (missing, outlier etc.)
-Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
+large data set needs cleaning
+Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
+help to categorize the variables for the further analysis. (missing, outlier etc.)
+Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
     </item>
     
     <item>
@@ -32,15 +32,6 @@ Meta Analysis is a method used the data results from individual studies.Studies
     </item>
     
     <item>
-      <title>pan</title>
-      <link>/2021/06/11/xxxx/</link>
-      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/11/xxxx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Git help</title>
       <link>/2021/05/03/githelp/</link>
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
@@ -48,8 +39,8 @@ Meta Analysis is a method used the data results from individual studies.Studies
       <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
 working directory.
-staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
+staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
     <item>
@@ -81,8 +72,8 @@ Experimental DesignA good experimental design will need:1. treatments are rand
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/24/missing-data/</guid>
-      <description>Missing dataWhat types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
-con: simple implementpro: loss given informationPairwise deletion?assumption： not missing here and there,con：compare with the listwise, the lost information reducedpro：cause inaccurate stand error as the knowingMean substitutionn?assumption:con： increase the sample sizepro: underestimate the errorsRegression imputationassumption: the value of other data are not missingcon: increase the sample size, reduce the stand errorpro: add extra effort into finding the fitted regression modelLast observation carried forwardassumption: the outcome remains unchanged by the missing datacon: easy communicate , typically used method on longitudinal datapro: need meet the assumptionMaximum likelihoodassumption: known distribution, etc.</description>
+      <description>Missing dataWhat types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
+con: simple implementpro: loss given informationPairwise deletion?assumption： not missing here and there,con：compare with the listwise, the lost information reducedpro：cause inaccurate stand error as the knowingMean substitutionn?</description>
     </item>
     
     <item>
@@ -91,9 +82,8 @@ con: simple implementpro: loss given informationPairwise deletion?assumption�
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
-hugo go:a tool we we can leverage to generate the static website. The layout below follows my master
-configconfig.*: in the format of . toml or yaml, the file speak globally.</description>
+      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
+hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
     </item>
     
     <item>
@@ -107,7 +97,7 @@ The digits are stored in reverse order, and each of their nodes contains a singl
 Add the two numbers and return the sum as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 source
-For this problem we will begin with the sashelp.baseball data set.Create a new table called newtable in the work library that has exactly the same rows as the sashelp.</description>
+For this problem we will begin with the sashelp.baseball data set.</description>
     </item>
     
     <item>
@@ -116,9 +106,9 @@ For this problem we will begin with the sashelp.baseball data set.Create a new 
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
-DEFINATION OF RELATION TABLESentity: (table) the object store the information
-attribute: column in a table to describe the part of the information</description>
+      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
+DEFINATION OF RELATION TABLESentity: (table) the object store the information
+attribute: column in a table to describe the part of the information</description>
     </item>
     
     <item>
@@ -129,7 +119,7 @@ attribute: column in a table to describe the part of the information</descriptio
       <guid>/2020/12/01/hello-r-markdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
     </item>
     
     <item>
@@ -139,7 +129,7 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       
       <guid>/2016/12/30/a-plain-markdown-post/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
-You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc. There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
+ You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
     
   </channel>

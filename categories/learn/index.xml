@@ -14,10 +14,10 @@
       
       <guid>/2022/06/21/exploratory-data-analyst-sql/</guid>
       <description>Exploratory Data Analyst applies to the following cases:vague targets or problems to the large data set
-large data set needs cleaning
-Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
-help to categorize the variables for the further analysis. (missing, outlier etc.)
-Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
+large data set needs cleaning
+Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
+help to categorize the variables for the further analysis. (missing, outlier etc.)
+Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
     </item>
     
     <item>
@@ -39,8 +39,8 @@ Meta Analysis is a method used the data results from individual studies.Studies
       <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
 working directory.
-staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
+staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
     <item>
@@ -49,9 +49,8 @@ blob: only save the content of the file instead the file name.tree: the file na
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
-hugo go:a tool we we can leverage to generate the static website. The layout below follows my master
-configconfig.*: in the format of . toml or yaml, the file speak globally.</description>
+      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
+hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
     </item>
     
     <item>
@@ -60,9 +59,9 @@ configconfig.*: in the format of . toml or yaml, the file speak globally.</desc
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
-DEFINATION OF RELATION TABLESentity: (table) the object store the information
-attribute: column in a table to describe the part of the information</description>
+      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
+DEFINATION OF RELATION TABLESentity: (table) the object store the information
+attribute: column in a table to describe the part of the information</description>
     </item>
     
   </channel>

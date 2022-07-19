@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.81.0" />
 
 
-<title>I am crazy - A Hugo website</title>
-<meta property="og:title" content="I am crazy - A Hugo website">
+<title>review my statistics - A Hugo website</title>
+<meta property="og:title" content="review my statistics - A Hugo website">
 
 
   <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -60,7 +60,7 @@
   <article class="article">
     
 
-    <h1 class="article-title">I am crazy</h1>
+    <h1 class="article-title">review my statistics</h1>
 
     
     <span class="article-date">2022-06-22</span>
@@ -70,7 +70,49 @@
       
 
 
-<p>去死吧</p>
+<div id="multicollinearity" class="section level1">
+<h1>Multicollinearity</h1>
+<ol style="list-style-type: decimal">
+<li><p>what is multi-col-linearity</p></li>
+<li><p>the problem of having multi-col-linearity</p></li>
+<li><p>what cause the multi-col-linearity</p></li>
+<li><p>using the VIF</p></li>
+<li><p>Solve the multicollinearity</p></li>
+</ol>
+<hr />
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<p>muticollinearity is observation on the data when two or more variables are highly correlated with each other.</p>
+<ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol>
+<ul>
+<li>makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<ul>
+<li><p>unremovable variable or the vairbales are important in predict</p></li>
+<li><p>new variable created derived or calculated from other variables.</p></li>
+<li><p>identical or scaler variable</p></li>
+<li><p>dummy variable trap: a variable has two level, this variable is created as two dummy variables to used in the dataset.</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li></li>
+</ol>
+<p>VIF: Variance inflate factor <span class="math inline">\({1}/{1-r_i^2}\)</span> 5-10 indicate the large mul-ticol-linearity.</p>
+<ol start="5" style="list-style-type: decimal">
+<li></li>
+</ol>
+<ul>
+<li><p>drop interatively</p></li>
+<li><p>combine the correlated variables into one and drop the others.</p></li>
+</ul>
+<p>NOTE: 1. when one single variable ’s effect is important to the target variable. 2. if the mul-ti-col-linearity is not important to the variable that interested, no need t remove.</p>
+<p>(ref)[<a href="https://www.analyticsvidhya.com/blog/2020/03/what-is-multicollinearity/" class="uri">https://www.analyticsvidhya.com/blog/2020/03/what-is-multicollinearity/</a>]</p>
+</div>
 
     </div>
   </article>
@@ -94,6 +136,9 @@
     
 
     
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
     
   </body>

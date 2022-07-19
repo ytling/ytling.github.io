@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on A Hugo website</title>
+    <link>/categories/statistics/</link>
+    <description>Recent content in Statistics on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>review my statistics</title>
+      <link>/2022/06/22/i-am-crazy/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/06/22/i-am-crazy/</guid>
+      <description>Multicollinearitywhat is multi-col-linearity
+the problem of having multi-col-linearity
+what cause the multi-col-linearity
+using the VIF
+Solve the multicollinearity
+muticollinearity is observation on the data when two or more variables are highly correlated with each other.
+makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens.</description>
+    </item>
+    
+  </channel>
+</rss>

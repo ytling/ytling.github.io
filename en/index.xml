@@ -6,7 +6,42 @@
     <description>Recent content in Ens on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Minimal App with R markdown</title>
+      <link>/2023/02/10/minimal-app-with-r-markdown/</link>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/02/10/minimal-app-with-r-markdown/</guid>
+      <description>some feedback from yihui’s talk on youtube.
+I tried the code he present on the video. I can see it did minimized the file size without affecting the feeling of the web browsers.
+One important change is to use the output: html_format to replace the output: html_document on the YAML metadata. This has been built into a GUI if you used the R studio by creating a new rmarkdown specifying the html output.</description>
+    </item>
+    
+    <item>
+      <title>加拿大的元宵节</title>
+      <link>/2023/02/07/%E6%97%A5%E5%B8%B8/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/02/07/%E6%97%A5%E5%B8%B8/</guid>
+      <description>2023 元宵节。11点左右我起来练了一会儿瑜伽，
+练完, 出门去教会了。牧师讲道的时候，我记得其中一个很有趣的栗子：
+“牧师一家在吃饭的是时候遇到一个十分粗鲁的服务员。付小费的时候，牧师觉得不应该给小费，牧师女儿觉得不仅要给还要多给一些。牧师很不理解，女儿解释：如果我们不给小费，他不会感到意外，如果我们给多小费，他就有可能改变。”
+可接受失去范围内给与而不计较得失。</description>
+    </item>
+    
+    <item>
+      <title>SAS ADV into R</title>
+      <link>/2023/01/03/sas/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/01/03/sas/</guid>
+      <description>Chapter 10
+Compare the symput and symputx difference, symput with x will give automatically removes leading zero and trailing blanks from the arguments. symget ()
+  SYMPUT routine create or update macro variables during DATA step execution.
+ performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable.    SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
+    </item>
+    
     <item>
       <title>review my statistics</title>
       <link>/2022/06/22/i-am-crazy/</link>
@@ -64,55 +99,10 @@ working directory.
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/04/22/resume/</guid>
-      <description>Site: The Bishop Strachan SchoolPosition: Data Analyst
+      <description>Looking for position: Data Analyst
 Dear Manager
-I am writing to express my keen interest in Data Analyst position in the Bishop Strachan School.
-I graduated from the Bio-statistics master program in the year 2019 and started to work in TD bank as Data Support Analysis. My passion and motivation came from assisting shareholder make decision from data-driven outcomes and tutoring in subject: elementary programming, math, elementary statitiscs.</description>
-    </item>
-    
-    <item>
-      <title>Experimental Design </title>
-      <link>/2021/03/26/experimental-design/</link>
-      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/26/experimental-design/</guid>
-      <description>Some concepts and examples in Experimental Design
-experimental study: a study subject is assigned the treatmentobservational study: a study with subject is observed or measuredexperimental unit: in an experimental study, basic entity can be assigned is called experimental unit. The experimental unit is people, called subject. At observational and experimental study, subjects are called participants.
-Experimental DesignA good experimental design will need:1. treatments are random assigned to the experimental unit.</description>
-    </item>
-    
-    <item>
-      <title>Missing Data</title>
-      <link>/2021/03/24/missing-data/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/24/missing-data/</guid>
-      <description>Missing dataWhat types of missing data?Missing completely at randomMissing at randomMissing not at randomWhat technique to handle missing data?Listwise or case deletion：assumption：sample size are large
-con: simple implementpro: loss given informationPairwise deletion?assumption： not missing here and there,con：compare with the listwise, the lost information reducedpro：cause inaccurate stand error as the knowingMean substitutionn?</description>
-    </item>
-    
-    <item>
-      <title>Blog Down</title>
-      <link>/2021/03/21/blog/</link>
-      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
-hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
-    </item>
-    
-    <item>
-      <title>SAS</title>
-      <link>/2021/03/21/sql-sas/</link>
-      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/21/sql-sas/</guid>
-      <description>SQLYou are given two non-empty linked lists representing two non-negative integers.
-The digits are stored in reverse order, and each of their nodes contains a single digit.
-Add the two numbers and return the sum as a linked list.
-You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-source
-For this problem we will begin with the sashelp.baseball data set.</description>
+I am writing to express my keen interest in Data Analyst position in the [Company Name].
+I graduated from the Bio-statistics master program in the year 2019 and started to work in TD bank as Data Support Analysis. My passion and motivation came from assisting shareholder make decision from data-driven outcomes and tutoring in subject: elementary programming, math, elementary statitiscs. I have both experience in tutoring both students in lower level university and elementary school.</description>
     </item>
     
     <item>
@@ -124,17 +114,6 @@ For this problem we will begin with the sashelp.baseball data set.</description>
       <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
 DEFINATION OF RELATION TABLESentity: (table) the object store the information
 attribute: column in a table to describe the part of the information</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      
-      <guid>/2020/12/01/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
     </item>
     
     <item>

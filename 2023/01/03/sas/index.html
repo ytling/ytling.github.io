@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>SAS ADV into R - A Hugo website</title>
+<meta property="og:title" content="SAS ADV into R - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Catergory</a></li>
+    
+    <li><a href="/en/">English</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">SAS ADV into R</h1>
+
+    
+    <span class="article-date">2023-01-03</span>
+    
+
+    <div class="article-content">
+      <p>Chapter 10</p>
+<p>Compare the <code>symput</code> and <code>symputx</code> difference, <code>symput</code> with <code>x</code> will give automatically removes leading zero and trailing blanks from the arguments. 
+<code>symget</code> ()</p>
+<ul>
+<li>
+<p><code>SYMPUT</code> routine create or update macro variables during DATA step execution.</p>
+<ul>
+<li>performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable.</li>
+</ul>
+</li>
+<li>
+<p><code>SYMGET</code> obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</p>
+</li>
+<li>
+<p><strong>INTO</strong> clause can be used in the <code>SELECT</code> statement to create or update macro variables during execution of a <code>PROC SQL</code> step.</p>
+</li>
+<li>
+<p><code>SYMPUT</code> and <code>SYMPUTN</code> to create or update macro variables during the execution of an SCL program.</p>
+</li>
+</ul>
+<p>QUIZ: 
+2.  to assign a literal string as a macro variable name, you enclose the literal in quotation marks. To assign a literal string as a value of the macro variable, you enclose the literal in quotation marks.
+5.<br>
+9.</p>
+<p>Chapter 11</p>
+<p>Define a Macro:</p>
+<pre><code>   %MACRO macro-name;
+
+            text
+
+    %MEND &lt;macro-name&gt;;
+</code></pre><p>Compile a Macro:</p>
+<ol>
+<li>check for syntas errors.</li>
+<li>write error message to SAS log</li>
+<li>stores all compiles macro language statements and constant txt in the SAS log</li>
+</ol>
+<p>Call a Macro:
+%MACRO</p>
+<p>Execution a Macro</p>
+<ol>
+<li>Search SAS catalog for the macro( Compiled macro language statement are executed)</li>
+<li>Macro executive is halted at the end of the SAS step and SAS code is executed.</li>
+<li>Macro exectution is resumed.</li>
+</ol>
+<p>TWO options: MPRINT AND MLOGIC 
+MPRINT: Shows in the SAS log the code that results from macro
+MLOGIC: Print the message that indicate macro actions that were taken during the macro executive.</p>
+<h1 id="the-local-symbol-table">The local Symbol Table</h1>
+<p>The local symbol table contains the macro variables</p>
+<ul>
+<li>created and initialized at macro parameter invocation.</li>
+<li>created and updated during the macro execution.</li>
+<li>reference everywhere within the macro.
+create a local macro variables within a macro definiation:</li>
+<li>parameter in a maro definition.</li>
+<li>a %lET statement within a macro definition</li>
+<li>a Data step that contains a SYMPUT routine within a macro definition</li>
+<li>a Data step that contains a STMPUTX routine within a macro definition.</li>
+<li>a SELECT SATEMENT THAT CONTAINS AN INTO clause IN proc SQL within a macro definition.</li>
+<li>A %LOCAL statement.</li>
+</ul>
+
+    </div>
+  </article>
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

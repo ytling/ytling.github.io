@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Minimal App with R markdown - A Hugo website</title>
+<meta property="og:title" content="Minimal App with R markdown - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Catergory</a></li>
+    
+    <li><a href="/en/">English</a></li>
+    
+    <li><a href="/cn/">中文</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Minimal App with R markdown</h1>
+
+    
+    <span class="article-date">2023-02-10</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>some feedback from yihui’s talk on <a href="https://www.youtube.com/watch?v=fiy32LjgGUE">youtube</a>.</p>
+<p>I tried the code he present on the video. I can see it did minimized the file size without affecting the feeling of the web browsers.</p>
+<p>One important change is to use the <code>output: html_format</code> to replace the <code>output: html_document</code> on the YAML metadata. This has been built into a GUI if you used the R studio by creating a new rmarkdown specifying the html output.</p>
+<p>One part that interests me the most is to turn the html r markdown output into a slide by using the css.</p>
+<p>The example code can be below:</p>
+<pre class="css"><code>
+.html {
+    scroll-snap-type: y mandatory;
+}
+
+.slide  {
+    min-height: 100vh;
+    scroll-snap-align: start;
+}</code></pre>
+<style type="text/css">
+
+.html {
+    scroll-snap-type: y mandatory;
+}
+
+.slide  {
+    min-height: 100vh;
+    scroll-snap-align: start;
+}
+</style>
+<p>The above code is to identify what is <strong>slide</strong> mean for every time it is called. Please note to set the <code>echo</code> to <strong>FALSE</strong>.</p>
+<p>After copying this code into the R markdown file, you will need <code>&lt;div class = "slide"&gt;</code> at the beginning of the section of the document and <code>&lt;/div&gt;</code> at the end of the section.</p>
+
+    </div>
+  </article>
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

@@ -6,7 +6,19 @@
     <description>Recent content in learn on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/learn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/learn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SAS ADV into R</title>
+      <link>/2023/01/03/sas/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/01/03/sas/</guid>
+      <description>Chapter 10
+Compare the symput and symputx difference, symput with x will give automatically removes leading zero and trailing blanks from the arguments. symget ()
+  SYMPUT routine create or update macro variables during DATA step execution.
+ performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable.    SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
+    </item>
+    
     <item>
       <title>Exploratory Data Analyst (SQL)</title>
       <link>/2022/06/21/exploratory-data-analyst-sql/</link>
@@ -41,16 +53,6 @@ Meta Analysis is a method used the data results from individual studies.Studies
 working directory.
 staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
 blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
-    </item>
-    
-    <item>
-      <title>Blog Down</title>
-      <link>/2021/03/21/blog/</link>
-      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/21/blog/</guid>
-      <description>get start:hugo go:configContentFront matterTemplates_default/list.html:terms.htmlPartials/.stores the templates reused in other html pages by the {{ partial }} function.footer.htmlCustom layoutsStatic filesLastlyAddin ….get start:here we go. already started
-hugo go:a tool we we can leverage to generate the static website. The layout below follows my master</description>
     </item>
     
     <item>

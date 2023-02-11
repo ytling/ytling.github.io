@@ -20,16 +20,5 @@
 Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
     </item>
     
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      
-      <guid>/2020/12/01/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
-    </item>
-    
   </channel>
 </rss>

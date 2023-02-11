@@ -5,26 +5,23 @@
     <loc>/</loc>
     <lastmod>2023-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/cn/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/git/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/life/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2023/02/10/submodule/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/en/</loc>
-    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2023/02/10/minimal-app-with-r-markdown/</loc>
+    <lastmod>2023-02-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2023/02/07/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2023-02-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/learn/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2023/01/03/sas/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2022/06/22/i-am-crazy/</loc>
     <lastmod>2022-06-22T00:00:00+00:00</lastmod>
@@ -35,11 +32,17 @@
     <loc>/2022/06/21/exploratory-data-analyst-sql/</loc>
     <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/learn/</loc>
-    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/r-markdown/</loc>
     <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/cn/</loc>
+    <lastmod>2021-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/life/</loc>
+    <lastmod>2021-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/07/09/meta-analysis/</loc>
     <lastmod>2021-07-09T00:00:00+00:00</lastmod>
@@ -53,6 +56,9 @@
     <loc>/2021/06/02/motivation/</loc>
     <lastmod>2021-06-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/git/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/2021/05/03/githelp/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -62,32 +68,8 @@
     <loc>/2021/04/21/%E6%8A%A4%E8%82%A4/</loc>
     <lastmod>2021-04-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/2021/03/26/experimental-design/</loc>
-    <lastmod>2021-03-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2021/03/24/missing-data/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2021/03/21/blog/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2021/03/21/sql-sas/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/2021/03/18/sql/</loc>
     <lastmod>2021-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/2020/12/01/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
     <loc>/2016/12/30/a-plain-markdown-post/</loc>
     <lastmod>2016-12-30T21:49:57-07:00</lastmod>

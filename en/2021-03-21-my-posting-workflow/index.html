@@ -1,0 +1,259 @@
+
+<div id="TOC">
+<ul>
+<li><a href="#get-start" id="toc-get-start">get start:</a></li>
+<li><a href="#hugo-go" id="toc-hugo-go">hugo go:</a>
+<ul>
+<li><a href="#config" id="toc-config">config</a></li>
+<li><a href="#content" id="toc-content">Content</a>
+<ul>
+<li><a href="#front-matter" id="toc-front-matter">Front matter</a></li>
+</ul></li>
+<li><a href="#templates" id="toc-templates">Templates</a>
+<ul>
+<li><a href="#defaultlist.html" id="toc-defaultlist.html">_default/list.html:</a></li>
+<li><a href="#terms.html" id="toc-terms.html">terms.html</a></li>
+<li><a href="#partials" id="toc-partials">Partials/</a></li>
+<li><a href="#stores-the-templates-reused-in-other-html-pages-by-the-partial-function." id="toc-stores-the-templates-reused-in-other-html-pages-by-the-partial-function.">.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</a></li>
+<li><a href="#footer.html" id="toc-footer.html">footer.html</a></li>
+</ul></li>
+<li><a href="#custom-layouts" id="toc-custom-layouts">Custom layouts</a></li>
+<li><a href="#static-files" id="toc-static-files">Static files</a></li>
+</ul></li>
+<li><a href="#lastly" id="toc-lastly">Lastly</a></li>
+<li><a href="#addin-." id="toc-addin-.">Addin ….</a></li>
+</ul>
+</div>
+
+<div id="get-start" class="section level1">
+<h1>get start:</h1>
+<p>here we go. already started</p>
+</div>
+<div id="hugo-go" class="section level1">
+<h1>hugo go:</h1>
+<p>a tool we we can leverage to generate the static website. The layout below follows my <a href="www.bookdown.org/yihui/blogdown">master</a></p>
+<div id="config" class="section level2">
+<h2>config</h2>
+<p><code>config.*</code>: in the format of . toml or yaml, the file speak globally. it contents parameters inside the <code>[]</code> and it populate the content inside as a variable in the site templates.</p>
+</div>
+<div id="content" class="section level2">
+<h2>Content</h2>
+<p>Content here has two: physical content means the real folder called content containing all your posting blogs. another content means the content of the artial and also means the each file you create to contain the things. The second content is in the format: .md: also used in the github. .Rmd: used best in rstudio. .markdown: not really sure.</p>
+<div id="front-matter" class="section level3">
+<h3>Front matter</h3>
+<p>website is plainly a html file here render from the .md or .Rmd files use to rendered. Front matter is used for define your post in many parameters. Used Addins in Rstdui is good. And most confused is <code>slug</code> and <code>title</code>. <code>title</code> : the title of the artical. <code>slug</code>: it is for the Permalinks. For this I mean, when open the website, you will see the <a href="http:\\slug" class="uri">http:\\slug</a> to direct to your responding webpage. You can change the</p>
+<pre><code>permalinks:
+  cn: /:year/:month/:day/:slug/
+  en: /:year/:month/:day/:slug/
+</code></pre>
+<p>into</p>
+<pre><code>permalinks:
+  cn: /:year/:month/:day/:title/
+  en: /:year/:month/:day/:title/</code></pre>
+<p>to used the title in the front matter to produce the link for the website. However, I do not think it is a good idea as we not always want a long link if a title is long.</p>
+</div>
+</div>
+<div id="templates" class="section level2">
+<h2>Templates</h2>
+<p>Hugo theme &lt;— templates + web asset.
+list templates and single templates are mostly common.
+_defaults/ has the following two files:
+### _default/single.html:
+a page uses to write single thing.</p>
+<pre><code># {{}}: use the hugo variables and functions
+{{ patial &quot;header.html&quot;}}
+&lt;div class = &#39;xxxx&#39;&gt;
+
+.........
+
+&lt;\div&gt;
+
+&lt;main&gt;
+{{ .Content }}  # ---&gt; wrapped in the HTML tag &lt;main&gt;
+&lt;/main&gt;
+
+{{ partial &#39;footer.html&#39; . }}</code></pre>
+<p>the class named xxx used to describe in the .css file under the statics.</p>
+<div id="defaultlist.html" class="section level3">
+<h3>_default/list.html:</h3>
+<p>a single list.html will generate multiple lists of pages according to the sections and taxonomy(catergories and tags) on the website. The list items are representes in the HTML tags <code>&lt;li&gt;</code>
+and <code>&lt;ul&gt;</code>.</p>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+{{if not .IsHome }} # ---&gt; if it is not homepages
+&lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+{{ end }}
+
+{{ .Content }}
+
+&lt;ul&gt;
+  {{ range (where .Data.Pages &quot;Section&quot; &quot;!=&quot; &quot;&quot;) }}
+  &lt;li&gt;
+    &lt;span class=&quot;date&quot;&gt;{{ .Date.Format &quot;2006/01/02&quot; }}&lt;/span&gt;
+    &lt;a href=&quot;{{ .URL }}&quot;&gt;{{ .Title }}&lt;/a&gt;
+  &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+
+{{ partial &quot;footer.html&quot; . }}
+</code></pre>
+<p>the function <code>{ range }</code> should not empty, and <strong>Section</strong> in hugo means the first-level of subdir in the content/ , for exmaple content/en/xxx, it is en.
+it will not contents the paged under the content.
+such as we say the <a href="https://*/en" class="uri">https://*/en</a> contains posts in the en only.</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;
+  
+  &lt;\li&gt;
+&lt;\ul&gt;</code></pre>
+</div>
+<div id="terms.html" class="section level3">
+<h3>terms.html</h3>
+<p>home page of tags/taxonomy terms. <code>.Data.Terms</code> stores all terms under a taxonomy(a catergry name). For example, you have many blogs with category blog, then hugo will automatic detect and collect them. The term is passes to hugo function <code>relURL</code> via pip <code>|</code> to make it relative, relative links are independ of the domain name.</p>
+</div>
+<div id="partials" class="section level3">
+<h3>Partials/</h3>
+<p>this is a dir collects pieces of the html used frequently.</p>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+&lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+
+&lt;ul class=&quot;terms&quot;&gt;
+  {{ range $key, $value := .Data.Terms }}
+  &lt;li&gt;
+    &lt;a href=&#39;{{ (print &quot;/&quot; $.Data.Plural &quot;/&quot; $key) | relURL }}&#39;&gt;
+      {{ $key }}
+    &lt;/a&gt;
+    ({{ len $value }})
+  &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+
+{{ partial &quot;footer.html&quot; . }}</code></pre>
+</div>
+<div id="stores-the-templates-reused-in-other-html-pages-by-the-partial-function." class="section level3">
+<h3>.stores the templates reused in other html pages by the <code>{{ partial }}</code> function.</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;{{ .Site.LanguageCode }}&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;{{ .Title }} | {{ .Site.Title }}&lt;/title&gt;
+    &lt;link href=&#39;{{ &quot;/css/style.css&quot; | relURL }}&#39;
+      rel=&quot;stylesheet&quot; /&gt;
+    &lt;link href=&#39;{{ &quot;/css/fonts.css&quot; | relURL }}&#39;
+      rel=&quot;stylesheet&quot; /&gt;
+    {{ partial &quot;head_custom.html&quot; . }}
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;nav&gt;
+    &lt;ul class=&quot;menu&quot;&gt;
+      {{ range .Site.Menus.main }}
+      &lt;li&gt;&lt;a href=&quot;{{ .URL | relURL }}&quot;&gt;{{ .Name }}&lt;/a&gt;&lt;/li&gt;
+      {{ end }}
+    &lt;/ul&gt;
+    &lt;hr/&gt;
+    &lt;/nav&gt;
+    </code></pre>
+<p><code>.Site.Menus.main</code> can used in the <code>config.toml</code></p>
+<pre><code>[[menu.main]]
+    name = &#39;Home&#39;
+    url = &quot;/&quot;
+    
+[[menu.main]]
+    name = &#39;About&#39;
+    url = &quot;/about/&quot;
+</code></pre>
+<p>it will be</p>
+<pre><code>&lt;ul class=&quot;menu&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/about/&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="footer.html" class="section level3">
+<h3>footer.html</h3>
+<pre><code>  &lt;footer&gt;
+  {{ partial &quot;foot_custom.html&quot; . }}
+  {{ with .Site.Params.footer }}
+  &lt;hr/&gt;
+  {{ . | markdownify }}
+  {{ end }}
+  &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>.Site.Params.footer</code> to generate a page footer. <code>with {{.}}{{end}}</code>is shorthand for the <code>{{if.Site.Params.footer}}{{.Site.Params.footer}}{{end}}</code> this saves you from typing the variable
+twice by using the <code>{{.}}</code> as a placeholder for the variable as a site parameter in the <code>config.xxx</code> . The additional function <code>markdownify</code> convert the markdown to HTML. this sequence ensure that we can add a <code>footer</code> parameter in the <code>config.xxx</code></p>
+<pre><code>[params]
+    footer = &quot;&amp;copy; [Yihui Xie](https://yihui.org) 2017&quot;</code></pre>
+</div>
+</div>
+<div id="custom-layouts" class="section level2">
+<h2>Custom layouts</h2>
+<pre><code>your-website/
+├── config.toml
+├── ...
+├── themes/
+│   └── hugo-xmin/
+│       ├── ...
+│       └── layouts/
+│           ├── ...
+│           └── partials
+│               ├── foot_custom.html
+│               ├── footer.html
+│               ├── head_custom.html
+│               └── header.html
+└── layouts
+    └── partials
+        ├── foot_custom.html
+        └── head_custom.html
+        </code></pre>
+<p>According to yihui, be careful to change the code under theme instead you can modified the both <code>foot_custom.html</code> and
+<code>head_custom.html</code> under the <code>root\layout\partials</code>.</p>
+</div>
+<div id="static-files" class="section level2">
+<h2>Static files</h2>
+<p>all files under the static/ are copied to the public/. This is used to save web asset like images, video, CSS and javascript. They can be override. For example, an image <code>static/subdir/xxx.png</code> can linked to <img src="subdir/xxx.png" />. It depends on the <code>baseurl</code> in <code>confi.xxx</code>,</p>
+<pre><code>baseurl = &quot;http://example.com/subdir/&quot;
+
+# this link to the /subdir/xxx.png</code></pre>
+<p>Attention Please: do not put <code>statics/about/index.Rmd</code> because it will overwrite the <code>content/about.md</code> as the file under <code>static/</code> will be copied to <code>public/</code>.</p>
+</div>
+</div>
+<div id="lastly" class="section level1">
+<h1>Lastly</h1>
+<p>Since I open a blog with the hugo plus git. I spent a lot time researching a simple and easy way to publish a blog. Then I used to the follow steps.<br />
+Assumption:<br />
+experienced R/R studio, git commit, <a href="https://bookdown.org/yihui/blogdown/a-quick-example.html">a exiting blog</a>, knowledge in HTML and CSS. A image w</p>
+<p>Procedure:<br />
+1. in R studio, use the <em>Addins</em> –&gt; <em>New Post</em> –&gt; fill in the information(I choose the .Rmd always)<br />
+2. in write the information with the simple <a href="http://rmarkdown.rstudio.com/">markdown syntax</a><br />
+3. <em>Knit</em> the file and test the view in the <em>Viewer</em><br />
+4. good, go to the project dictionary and cmd</p>
+<pre><code>hugo -D 
+# this is used to push the updated files in ./content/post to ./public</code></pre>
+<p>5.re-direct to the <code>.\public</code> and use git commit.</p>
+<pre><code>cd public 
+git add .
+git commit -m &#39;XXXX&#39;
+git push </code></pre>
+<p>6.your new poster is good to go</p>
+<hr />
+</div>
+<div id="addin-." class="section level1">
+<h1>Addin ….</h1>
+<ul>
+<li><p>website is generated from the HTML file, so the correct format of the html is important.
+the <code>knit</code> used with the blogdown library is different from the simple <code>knit</code> in a regular file. My solution is kind werid. I create a Rmd file named different from index.Rmd, copy the file into the new Rmd file and knit with a new html output. Then I rename the original index.Rmd and index.html into XXX_origin and changed the new created Rmd and html into index.XXX. Lastly, I serve_site() to see if it has been changed.</p></li>
+<li><p><code>build_site(local = TRUE)</code>: recompiled the Rmd file. some xxx.Rmd file is not recompiled when xxx.html has relative lastest modified time.However,</p>
+<ul>
+<li>delete the xxx.html and run the <code>knite</code> again.</li>
+<li>click the Addins, ‘Touch file’</li>
+</ul></li>
+<li><p>If you have time-consuming code chunks in any Rmd files, you have to use either of these methods to save time:</p></li>
+<li><p>Turn on knitr’s caching for time-consuming code chunks, i.e., the chunk option cache = TRUE.</p></li>
+<li><p>Do not call <code>build_site()</code>,
+but <code>blogdown::hugo_build()</code> instead. The latter does not compile any Rmd files, but simply runs the hugo command to build the site. <em>Please use this method only if you are sure that your Rmd files do not need to be recompiled</em></p></li>
+<li><p>Draft and future posts are always rendered when local = TRUE, but not when local = FALSE.
+This is for you to preview draft and future posts locally. If you know the Hugo command line, it means the hugo command is called with the flags -D -F, or equivalently, <code>--buildDrafts</code> or <code>--buildFuture</code> [ref] (<a href="https://bookdown.org/yihui/blogdown/local-preview.html" class="uri">https://bookdown.org/yihui/blogdown/local-preview.html</a>)</p></li>
+</ul>
+</div>

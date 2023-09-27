@@ -13,7 +13,7 @@
       <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>/2023/09/27/submodule/</guid>
-      <description></description>
+      <description>这次的返工就一定要把过程记录下来了。 1. clone with submodule 2. cd ./submodule 3. add. commit -m push. 4. cd .. 5. git submodule update –remote submodule 6. add . commit -m push</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>/2023/09/26/%E6%98%AF%E7%8B%97%E6%98%AF%E7%8C%AB/</guid>
-      <description>撩完就跑。明明是添狗为啥要装成是猫。算了这也是人的想法。也许（它）他什么也没想。拉过来，一双可爱的小眼睛，又原谅了。</description>
+      <description>我家狗子经常撩完我就跑。明明是狗为啥要装成是猫。算了这也是人的想法。也许它什么也没想。看着一双可爱的小眼睛，又原谅了。</description>
     </item>
     
     <item>

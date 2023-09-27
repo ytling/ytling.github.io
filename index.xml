@@ -6,7 +6,25 @@
     <description>Recent content on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>submodule</title>
+      <link>/2023/09/27/submodule/</link>
+      <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/09/27/submodule/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>是狗是猫</title>
+      <link>/2023/09/26/%E6%98%AF%E7%8B%97%E6%98%AF%E7%8C%AB/</link>
+      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/2023/09/26/%E6%98%AF%E7%8B%97%E6%98%AF%E7%8C%AB/</guid>
+      <description>撩完就跑。明明是添狗为啥要装成是猫。算了这也是人的想法。也许（它）他什么也没想。拉过来，一双可爱的小眼睛，又原谅了。</description>
+    </item>
+    
     <item>
       <title>Minimal App with R markdown</title>
       <link>/2023/02/10/minimal-app-with-r-markdown/</link>
@@ -38,8 +56,8 @@ One important change is to use the output: html_format to replace the output: ht
       <guid>/2023/01/03/sas/</guid>
       <description>Chapter 10
 Compare the symput and symputx difference, symput with x will give automatically removes leading zero and trailing blanks from the arguments. symget ()
-  SYMPUT routine create or update macro variables during DATA step execution.
- performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable.    SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
+SYMPUT routine create or update macro variables during DATA step execution.
+performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable. SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
     </item>
     
     <item>
@@ -48,13 +66,13 @@ Compare the symput and symputx difference, symput with x will give automatically
       <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/2022/06/22/i-am-crazy/</guid>
-      <description>Multicollinearitywhat is multi-col-linearity
-the problem of having multi-col-linearity
-what cause the multi-col-linearity
-using the VIF
-Solve the multicollinearity
-muticollinearity is observation on the data when two or more variables are highly correlated with each other.
-makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens.</description>
+      <description>Multicollinearity what is multi-col-linearity
+the problem of having multi-col-linearity
+what cause the multi-col-linearity
+using the VIF
+Solve the multicollinearity
+muticollinearity is observation on the data when two or more variables are highly correlated with each other.
+makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens. unremovable variable or the vairbales are important in predict</description>
     </item>
     
     <item>
@@ -63,11 +81,11 @@ Compare the symput and symputx difference, symput with x will give automatically
       <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/2022/06/21/exploratory-data-analyst-sql/</guid>
-      <description>Exploratory Data Analyst applies to the following cases:vague targets or problems to the large data set
-large data set needs cleaning
-Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
-help to categorize the variables for the further analysis. (missing, outlier etc.)
-Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
+      <description>Exploratory Data Analyst applies to the following cases: vague targets or problems to the large data set
+large data set needs cleaning
+Benefit of the exploratory data analyst: help find the inner pattern or relationship through the data
+help to categorize the variables for the further analysis. (missing, outlier etc.)
+Three type of data Numeric data We would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
     </item>
     
     <item>
@@ -78,7 +96,7 @@ Compare the symput and symputx difference, symput with x will give automatically
       <guid>/2021/07/09/meta-analysis/</guid>
       <description>ref
 NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.
-Meta Analysis is a method used the data results from individual studies.Studies are coming from computerized Literature Search of a database such as PudMed etc.The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
+Meta Analysis is a method used the data results from individual studies. Studies are coming from computerized Literature Search of a database such as PudMed etc. The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
     </item>
     
     <item>
@@ -100,8 +118,8 @@ Meta Analysis is a method used the data results from individual studies.Studies
       
       <guid>/2021/07/04/%E9%9F%A9%E5%9B%BD%E9%A5%AD%E5%8D%B7/</guid>
       <description>今天尝试做了一次韩国的饭卷， 用到的食材可以在Hmart 和 Galleria： 介绍的顺序我打算从里到外： 内卷：
- 蟹棒 黄瓜 鸡蛋，鸡蛋烧或者鸡蛋片 韩国的腌萝卜 新鲜的胡萝卜 火腿肠  步骤： 0. 煮饭
- 煎鸡蛋 油煎 胡萝卜和火腿肠 等饭出锅， 放凉，加上 酱油 ，和芝麻，加点 盐 和 醋 寿司卷帘准备 海苔可以拿出来平铺 称出饭来均匀的放在紫菜卷上面，注意在 边缘的地方流出点空 随意顺序放上菜 然后开始卷， 在空出的边缘处抹上点水，方便以后可以粘上 -1. 切开头尾处，留下中间的位置，慢慢的一刀切，摆盘！  </description>
+蟹棒 黄瓜 鸡蛋，鸡蛋烧或者鸡蛋片 韩国的腌萝卜 新鲜的胡萝卜 火腿肠 步骤： 0. 煮饭
+煎鸡蛋 油煎 胡萝卜和火腿肠 等饭出锅， 放凉，加上 酱油 ，和芝麻，加点 盐 和 醋 寿司卷帘准备 海苔可以拿出来平铺 称出饭来均匀的放在紫菜卷上面，注意在 边缘的地方流出点空 随意顺序放上菜 然后开始卷， 在空出的边缘处抹上点水，方便以后可以粘上 -1. 切开头尾处，留下中间的位置，慢慢的一刀切，摆盘！ </description>
     </item>
     
     <item>
@@ -123,8 +141,8 @@ R 和 python 叫啥，计算机语言，啥是语言，就是方便交流用的�
       <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
 working directory.
-staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
+staging area(index). git repository. three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name. tree: the file name. commit: the first commit also called root commit. git basic git init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
     <item>
@@ -146,16 +164,17 @@ I graduated from the Bio-statistics master program in the year 2019 and started 
       
       <guid>/2021/04/21/%E6%8A%A4%E8%82%A4/</guid>
       <description>年纪大了皮肤不如以前抗氧能力强了,学习护肤.
-步骤   早上：每天
- 洁面（如果感觉太干可以省略） 微微湿润的时候，眼部，两滴玻尿酸在面霜里面 涂抹防晒    晚上： 每天
- 洁面 脸微微湿润的时候，视黄醇 1-3 次每周在面霜 加上凡士林， 每周1-2 次    NOTE
+步骤 早上：每天
+洁面（如果感觉太干可以省略） 微微湿润的时候，眼部，两滴玻尿酸在面霜里面 涂抹防晒 晚上： 每天
+洁面 脸微微湿润的时候，视黄醇 1-3 次每周在面霜 加上凡士林， 每周1-2 次 NOTE
 洗脸20 s to 1 min, 指尖按摩确保干净, 水温 36-40 °
 Lactic acid 乳酸+玻尿酸 有两种,一个是5%一个是10%, 可以自己选择
-产品选择:   洗面奶
- Cerave    面霜
- Elizabeth Arden    玻尿酸(hyaluronic acid)
- the inky list    水杨酸（Salicylic Acid): 只要是收缩毛孔，和一些斑纹吗，建议晚上使用，但是不要和Retinol（视黄醇）
- Bobbi Brown: + 蔷薇果 (Rose hip)，摩洛哥坚果油，    防晒霜（sun cream)</description>
+产品选择: 洗面奶
+Cerave 面霜
+Elizabeth Arden 玻尿酸(hyaluronic acid)
+the inky list 水杨酸（Salicylic Acid): 只要是收缩毛孔，和一些斑纹吗，建议晚上使用，但是不要和Retinol（视黄醇）
+Bobbi Brown: + 蔷薇果 (Rose hip)，摩洛哥坚果油， 防晒霜（sun cream)
+shiseids: 50+ UV protector ANESSA: 50+ skin care milk 科颜氏Super Fluid Daily </description>
     </item>
     
     <item>
@@ -164,9 +183,9 @@ Lactic acid 乳酸+玻尿酸 有两种,一个是5%一个是10%, 可以自己选�
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
-DEFINATION OF RELATION TABLESentity: (table) the object store the information
-attribute: column in a table to describe the part of the information</description>
+      <description>DEFINATION OF RELATION TABLES HOW TO CHANGE THE ENTITY TO A SCHEMAS CASE WHEN SUBQUERY COMMON TABLE EXPRESS (cte) WINDOW FUN ROLLUP and CUBE TABLESAMPLE UNPIVOT:ROW TO COLUMN PIVOT:COLUME TO ROW Some information contains from Datacamp, you can use my refer to get started and learn new technique together.
+DEFINATION OF RELATION TABLES entity: (table) the object store the information
+attribute: column in a table to describe the part of the information</description>
     </item>
     
     <item>
@@ -176,7 +195,7 @@ DEFINATION OF RELATION TABLESentity: (table) the object store the information
       
       <guid>/2016/12/30/a-plain-markdown-post/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
- You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
+You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc. There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
     
     <item>
@@ -186,7 +205,7 @@ DEFINATION OF RELATION TABLESentity: (table) the object store the information
       
       <guid>/about/</guid>
       <description>A brief introduction to myself, I graduated from York University in statistics, BA in Year 2018 and completed the master of Biostatistics at University of Toronto in year 2019. After graduated, I started as an intern associate in TD bank. After 8 months, I received a full-time position as an IT support analyst and left in November 2020.
- Why I choose the biostatisics program after graduate from York University? my personal interest in reading paper on the human&amp;rsquo;s health and curiosity on the statistics behind.</description>
+Why I choose the biostatisics program after graduate from York University? my personal interest in reading paper on the human&amp;rsquo;s health and curiosity on the statistics behind.</description>
     </item>
     
   </channel>

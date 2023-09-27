@@ -13,13 +13,13 @@
       <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/2022/06/22/i-am-crazy/</guid>
-      <description>Multicollinearitywhat is multi-col-linearity
-the problem of having multi-col-linearity
-what cause the multi-col-linearity
-using the VIF
-Solve the multicollinearity
-muticollinearity is observation on the data when two or more variables are highly correlated with each other.
-makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens.</description>
+      <description>Multicollinearity what is multi-col-linearity
+the problem of having multi-col-linearity
+what cause the multi-col-linearity
+using the VIF
+Solve the multicollinearity
+muticollinearity is observation on the data when two or more variables are highly correlated with each other.
+makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens. unremovable variable or the vairbales are important in predict</description>
     </item>
     
   </channel>

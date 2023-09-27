@@ -38,8 +38,8 @@ One important change is to use the output: html_format to replace the output: ht
       <guid>/2023/01/03/sas/</guid>
       <description>Chapter 10
 Compare the symput and symputx difference, symput with x will give automatically removes leading zero and trailing blanks from the arguments. symget ()
-  SYMPUT routine create or update macro variables during DATA step execution.
- performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable.    SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
+SYMPUT routine create or update macro variables during DATA step execution.
+performs automatic numeric to character conversion on any numeric value that you attempt to assign to a macro variable. SYMGET obtain the value of a macro variable during the execution of a DATA step, a PROC SQL step, or an SCL program.</description>
     </item>
     
     <item>
@@ -48,13 +48,13 @@ Compare the symput and symputx difference, symput with x will give automatically
       <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/2022/06/22/i-am-crazy/</guid>
-      <description>Multicollinearitywhat is multi-col-linearity
-the problem of having multi-col-linearity
-what cause the multi-col-linearity
-using the VIF
-Solve the multicollinearity
-muticollinearity is observation on the data when two or more variables are highly correlated with each other.
-makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens.</description>
+      <description>Multicollinearity what is multi-col-linearity
+the problem of having multi-col-linearity
+what cause the multi-col-linearity
+using the VIF
+Solve the multicollinearity
+muticollinearity is observation on the data when two or more variables are highly correlated with each other.
+makes the interpretation of the variable to the target variable hard. For example, one unit of increase on x1 will case xxx increase/decrease on target variable when multicollearity happens. unremovable variable or the vairbales are important in predict</description>
     </item>
     
     <item>
@@ -63,11 +63,11 @@ Compare the symput and symputx difference, symput with x will give automatically
       <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>/2022/06/21/exploratory-data-analyst-sql/</guid>
-      <description>Exploratory Data Analyst applies to the following cases:vague targets or problems to the large data set
-large data set needs cleaning
-Benefit of the exploratory data analyst:help find the inner pattern or relationship through the data
-help to categorize the variables for the further analysis. (missing, outlier etc.)
-Three type of dataNumeric dataWe would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
+      <description>Exploratory Data Analyst applies to the following cases: vague targets or problems to the large data set
+large data set needs cleaning
+Benefit of the exploratory data analyst: help find the inner pattern or relationship through the data
+help to categorize the variables for the further analysis. (missing, outlier etc.)
+Three type of data Numeric data We would like to know the min and max, average, variance and correlation and percentile to this type of data.</description>
     </item>
     
     <item>
@@ -78,7 +78,7 @@ Compare the symput and symputx difference, symput with x will give automatically
       <guid>/2021/07/09/meta-analysis/</guid>
       <description>ref
 NOTE: most words are from the ref above, and it is a mini summary from my own perspective. Since I am truly not able to find the better word to describe.
-Meta Analysis is a method used the data results from individual studies.Studies are coming from computerized Literature Search of a database such as PudMed etc.The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
+Meta Analysis is a method used the data results from individual studies. Studies are coming from computerized Literature Search of a database such as PudMed etc. The auto search are based on the participants, interventions, comparison and study designs indicated in the contrasts of the scientific papers.</description>
     </item>
     
     <item>
@@ -89,8 +89,8 @@ Meta Analysis is a method used the data results from individual studies.Studies
       <guid>/2021/05/03/githelp/</guid>
       <description>Git is a free and open source distributed version control system.
 working directory.
-staging area(index).git repository.three different objects generate from git cmd and describe in Hash:
-blob: only save the content of the file instead the file name.tree: the file name.commit: the first commit also called root commit.git basicgit init: generate a file called /.git/ used ls -a to see all the hided files.</description>
+staging area(index). git repository. three different objects generate from git cmd and describe in Hash:
+blob: only save the content of the file instead the file name. tree: the file name. commit: the first commit also called root commit. git basic git init: generate a file called /.git/ used ls -a to see all the hided files.</description>
     </item>
     
     <item>
@@ -111,9 +111,9 @@ I graduated from the Bio-statistics master program in the year 2019 and started 
       <pubDate>Thu, 18 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/03/18/sql/</guid>
-      <description>DEFINATION OF RELATION TABLESHOW TO CHANGE THE ENTITY TO A SCHEMASCASE WHENSUBQUERYCOMMON TABLE EXPRESS (cte)WINDOW FUNROLLUP and CUBETABLESAMPLEUNPIVOT:ROW TO COLUMNPIVOT:COLUME TO ROWSome information contains from Datacamp, you can use my refer to get started and learn new technique together.
-DEFINATION OF RELATION TABLESentity: (table) the object store the information
-attribute: column in a table to describe the part of the information</description>
+      <description>DEFINATION OF RELATION TABLES HOW TO CHANGE THE ENTITY TO A SCHEMAS CASE WHEN SUBQUERY COMMON TABLE EXPRESS (cte) WINDOW FUN ROLLUP and CUBE TABLESAMPLE UNPIVOT:ROW TO COLUMN PIVOT:COLUME TO ROW Some information contains from Datacamp, you can use my refer to get started and learn new technique together.
+DEFINATION OF RELATION TABLES entity: (table) the object store the information
+attribute: column in a table to describe the part of the information</description>
     </item>
     
     <item>
@@ -123,7 +123,7 @@ DEFINATION OF RELATION TABLESentity: (table) the object store the information
       
       <guid>/2016/12/30/a-plain-markdown-post/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
- You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
+You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc. There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
     
   </channel>

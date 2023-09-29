@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="/cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>submodule</title>
+      <title>Submodule</title>
       <link>/2023/09/27/submodule/</link>
       <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
       
@@ -16,15 +16,6 @@
       <description>这次的返工就一定要把过程记录下来了。
 clone with sub-module git clone https://github.com/ytling/Rblog.git cd ytling.github.io ls -la cd ytling.github.io/ ls git ytling.github.io init git submodule update Cloning into &amp;#39;DbConnector&amp;#39;... or
 git clone --recurse-submodules https://github.com/ytling/Rblog.git add change and push to main module and sub module # first update the submodule cd ./ytling.github.io git add . git commit -m git push origin HEAD:main # back to main module and update # push into the main module cd .</description>
-    </item>
-    
-    <item>
-      <title>是狗是猫</title>
-      <link>/2023/09/26/%E6%98%AF%E7%8B%97%E6%98%AF%E7%8C%AB/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/2023/09/26/%E6%98%AF%E7%8B%97%E6%98%AF%E7%8C%AB/</guid>
-      <description>我家狗子经常撩完我就跑。明明是狗为啥要装成是猫。算了这也是人的想法。也许它什么也没想。看着一双可爱的小眼睛，又原谅了。</description>
     </item>
     
     <item>

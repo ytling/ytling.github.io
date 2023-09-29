@@ -22,6 +22,11 @@
 
 
 
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
 <link rel="stylesheet" href="/css/fonts.css" media="all">
 <link rel="stylesheet" href="/css/main.css" media="all">
 
@@ -68,13 +73,36 @@
       
 
 
-<p>这次的返工就一定要把过程记录下来了。
-1. clone with submodule
-2. cd ./submodule
-3. add. commit -m push.
-4. cd ..
-5. git submodule update –remote submodule
-6. add . commit -m push</p>
+<p>这次的返工就一定要把过程记录下来了。</p>
+<div id="clone-with-sub-module" class="section level2">
+<h2>clone with sub-module</h2>
+<pre><code>git clone https://github.com/ytling/Rblog.git
+cd ytling.github.io
+ls -la
+cd ytling.github.io/
+ls
+git ytling.github.io init
+git submodule update
+Cloning into &#39;DbConnector&#39;...</code></pre>
+<p>or</p>
+<pre><code>git clone --recurse-submodules https://github.com/ytling/Rblog.git</code></pre>
+</div>
+<div id="add-change-and-push-to-main-module-and-sub-module" class="section level2">
+<h2>add change and push to main module and sub module</h2>
+<pre><code># first update the submodule
+cd ./ytling.github.io
+git add .    
+git commit -m     
+git push origin HEAD:main   
+
+# back to main module and update
+# push into the main module
+cd .. 
+git submodule update --remote ytling.github.io 
+git add .     
+git commit -m    
+git push    </code></pre>
+</div>
 
     </div>
   </article>
@@ -96,6 +124,18 @@
 
     </div>
     
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
 
     
 

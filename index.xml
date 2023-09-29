@@ -13,7 +13,9 @@
       <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>/2023/09/27/submodule/</guid>
-      <description>这次的返工就一定要把过程记录下来了。 1. clone with submodule 2. cd ./submodule 3. add. commit -m push. 4. cd .. 5. git submodule update –remote submodule 6. add . commit -m push</description>
+      <description>这次的返工就一定要把过程记录下来了。
+clone with sub-module git clone https://github.com/ytling/Rblog.git cd ytling.github.io ls -la cd ytling.github.io/ ls git ytling.github.io init git submodule update Cloning into &amp;#39;DbConnector&amp;#39;... or
+git clone --recurse-submodules https://github.com/ytling/Rblog.git add change and push to main module and sub module # first update the submodule cd ./ytling.github.io git add . git commit -m git push origin HEAD:main # back to main module and update # push into the main module cd .</description>
     </item>
     
     <item>
